@@ -1,0 +1,11 @@
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.exe.config
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.exe
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.pdb
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.AssemblyReference.cache
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.Form1.resources
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.Properties.Resources.resources
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.GenerateResource.cache
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.CoreCompileInputs.cache
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.pdb
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe.config
