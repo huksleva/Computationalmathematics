@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.типЗадачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -35,14 +36,14 @@
             this.ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.численныйМетодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.алгоритмToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nameOftask_label = new System.Windows.Forms.Label();
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.методПрямоугольниковПравыхЧастейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.методТрапецийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.методПараболToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.алгоритмToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.алгоритмСПостояннымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сПеременнымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nameOftask_label = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(984, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // типЗадачиToolStripMenuItem
             // 
@@ -110,30 +112,10 @@
             this.численныйМетодToolStripMenuItem.Text = "Численный метод";
             this.численныйМетодToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ЧисленныйМетодToolStripMenuItem_DropDownItemClicked);
             // 
-            // алгоритмToolStripMenuItem
-            // 
-            this.алгоритмToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.алгоритмСПостояннымШагомToolStripMenuItem,
-            this.сПеременнымШагомToolStripMenuItem});
-            this.алгоритмToolStripMenuItem.Name = "алгоритмToolStripMenuItem";
-            this.алгоритмToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
-            this.алгоритмToolStripMenuItem.Text = "Алгоритм";
-            // 
-            // nameOftask_label
-            // 
-            this.nameOftask_label.AutoSize = true;
-            this.nameOftask_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameOftask_label.Location = new System.Drawing.Point(370, 30);
-            this.nameOftask_label.Name = "nameOftask_label";
-            this.nameOftask_label.Size = new System.Drawing.Size(268, 20);
-            this.nameOftask_label.TabIndex = 4;
-            this.nameOftask_label.Text = "Численное интегрирование";
-            this.nameOftask_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // методПрямоугольниковЛевыхЧастейToolStripMenuItem
             // 
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Name = "методПрямоугольниковЛевыхЧастейToolStripMenuItem";
-            this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(362, 26);
+            this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Text = "Метод прямоугольников левых частей";
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Click += new System.EventHandler(this.методПрямоугольниковЛевыхЧастейToolStripMenuItem_Click);
             // 
@@ -155,6 +137,16 @@
             this.методПараболToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
             this.методПараболToolStripMenuItem.Text = "Метод парабол";
             // 
+            // алгоритмToolStripMenuItem
+            // 
+            this.алгоритмToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.алгоритмСПостояннымШагомToolStripMenuItem,
+            this.сПеременнымШагомToolStripMenuItem});
+            this.алгоритмToolStripMenuItem.Name = "алгоритмToolStripMenuItem";
+            this.алгоритмToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.алгоритмToolStripMenuItem.Text = "Алгоритм";
+            this.алгоритмToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.АлгоритмToolStripMenuItem_DropDownItemClicked);
+            // 
             // алгоритмСПостояннымШагомToolStripMenuItem
             // 
             this.алгоритмСПостояннымШагомToolStripMenuItem.Name = "алгоритмСПостояннымШагомToolStripMenuItem";
@@ -167,6 +159,17 @@
             this.сПеременнымШагомToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.сПеременнымШагомToolStripMenuItem.Text = "С переменным шагом";
             // 
+            // nameOftask_label
+            // 
+            this.nameOftask_label.AutoSize = true;
+            this.nameOftask_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameOftask_label.Location = new System.Drawing.Point(370, 30);
+            this.nameOftask_label.Name = "nameOftask_label";
+            this.nameOftask_label.Size = new System.Drawing.Size(268, 20);
+            this.nameOftask_label.TabIndex = 4;
+            this.nameOftask_label.Text = "Численное интегрирование";
+            this.nameOftask_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -174,6 +177,7 @@
             this.ClientSize = new System.Drawing.Size(984, 457);
             this.Controls.Add(this.nameOftask_label);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "ЛР_1_ВМ. Численное интегрирование. Тоц Л. А., ИВТ-2.";

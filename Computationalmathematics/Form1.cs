@@ -21,6 +21,8 @@ namespace Computationalmathematics
         private void Form1_Load(object sender, EventArgs e)
         {
             ToolStripMenuItem1.Checked = true;
+            методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true;
+            алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
         }
 
 
@@ -69,9 +71,32 @@ namespace Computationalmathematics
         // Переключение Численного метода
         private void ЧисленныйМетодToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            foreach (ToolStripMenuItem item in численныйМетодToolStripMenuItem.DropDownItems)
+            {
+                item.Checked = false;
+            }
 
+            if (e.ClickedItem is ToolStripMenuItem currentItem)
+            {
+                currentItem.Checked = true;
+            }
         }
 
+
+
+        // Переключение Алгоритма
+        private void АлгоритмToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            foreach (ToolStripMenuItem item in алгоритмToolStripMenuItem.DropDownItems)
+            {
+                item.Checked = false;
+            }
+
+            if (e.ClickedItem is ToolStripMenuItem currentItem)
+            {
+                currentItem.Checked = true;
+            }
+        }
 
 
 
@@ -134,6 +159,9 @@ namespace Computationalmathematics
 
         }
 
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
+        }
     }
 }
