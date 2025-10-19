@@ -9,3 +9,13 @@ C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Comp
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.pdb
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe.config
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.exe.config
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.exe
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.pdb
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.AssemblyReference.cache
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.Form1.resources
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.Properties.Resources.resources
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.GenerateResource.cache
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.CoreCompileInputs.cache
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.pdb

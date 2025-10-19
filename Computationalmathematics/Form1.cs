@@ -17,6 +17,116 @@ namespace Computationalmathematics
             InitializeComponent();
         }
 
+        // Подинтегральная функция
+        double F(double x)
+        {
+            return (2*Math.Log(x) + x + 1); 
+        }
+
+        // Метод левых прямоугольников
+        double leftRectangleMethod(double a, double b, uint n)
+        {
+            double h = (b - a) / n;
+            double res = 0;
+            for (double i = a; i < b; i+=h)
+            {
+                res += F(i);
+            }
+
+            return h*res;
+        }
+
+        // Метод правых прямоугольников
+        double rightRectangleMethod(double a, double b, uint n)
+        {
+            double h = (b - a) / n;
+            double res = 0;
+            for (double i = a + h; i <= b; i += h)
+            {
+                res += F(i);
+            }
+
+            return h * res;
+        }
+
+        // Метод трапеций
+        double trapezoidMethod(double a, double b, uint n)
+        {
+            double res = 0;
+            double h = (b - a) / n;
+
+
+
+            return res;
+        }
+
+
+
+        // Нажатие на кнопку - вычисление примера
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Проверка на то что a, b, n - числа
+            if (double.TryParse(textA.Text, out double a))
+            {
+                if (double.TryParse(textB.Text, out double b))
+                {
+                    if (uint.TryParse(textBoxN.Text, out uint n))
+                    {
+                        // Начинаем считать
+                        if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
+                        {
+                            answerLabel.Text = leftRectangleMethod(a, b, n).ToString();
+                        }
+                        else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
+                        {
+                            answerLabel.Text = rightRectangleMethod(a, b, n).ToString();
+                        }
+                        else if (методТрапецийToolStripMenuItem.Checked == true)
+                        {
+
+
+
+                        }
+                        else if (методПараболToolStripMenuItem.Checked == true)
+                        {
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERROR METHOD!");
+                        }
+
+
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Кол-во разбиений (n) должно быть целым положительным числом, проверь!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Правая граница (b) должна быть числом, проверь!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Левая граница (a) должна быть числом, проверь!");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
         // При загрузке формы
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -116,7 +226,6 @@ namespace Computationalmathematics
 
 
 
-
         private void алгоритмToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -160,6 +269,16 @@ namespace Computationalmathematics
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
