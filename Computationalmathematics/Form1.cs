@@ -83,43 +83,59 @@ namespace Computationalmathematics
             return sum * h / 3.0;
         }
 
+        // Метод с переменным шагом
+        double variuosMethod(double a, double b)
+        {
+
+            return 5;
+        }
+
 
 
         // Нажатие на кнопку - вычисление примера
         private void button1_Click(object sender, EventArgs e)
-        {
+        {   
             // Проверка на то что a, b, n - числа
             if (double.TryParse(textA.Text, out double a))
             {
                 if (double.TryParse(textB.Text, out double b))
                 {
-                    if (uint.TryParse(textBoxN.Text, out uint n))
+                    // Используем алгоритм с постоянным шагом
+                    if (textBoxN.Visible == true && label1.Visible == true)
                     {
-                        // Начинаем считать
-                        if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
+                        if (uint.TryParse(textBoxN.Text, out uint n))
                         {
-                            answerLabel.Text = leftRectangleMethod(a, b, n).ToString();
-                        }
-                        else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
-                        {
-                            answerLabel.Text = rightRectangleMethod(a, b, n).ToString();
-                        }
-                        else if (методТрапецийToolStripMenuItem.Checked == true)
-                        {
-                            answerLabel.Text = trapezoidMethod(a, b, n).ToString();
-                        }
-                        else if (методПараболToolStripMenuItem.Checked == true)
-                        {
-                            answerLabel.Text = parabolaMethod(a, b, n).ToString();
+                            // Начинаем считать
+                            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
+                            {
+                                answerLabel.Text = leftRectangleMethod(a, b, n).ToString();
+                            }
+                            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
+                            {
+                                answerLabel.Text = rightRectangleMethod(a, b, n).ToString();
+                            }
+                            else if (методТрапецийToolStripMenuItem.Checked == true)
+                            {
+                                answerLabel.Text = trapezoidMethod(a, b, n).ToString();
+                            }
+                            else if (методПараболToolStripMenuItem.Checked == true)
+                            {
+                                answerLabel.Text = parabolaMethod(a, b, n).ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("ERROR METHOD!");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("ERROR METHOD!");
+                            MessageBox.Show("Кол-во разбиений (n) должно быть целым положительным числом, проверь!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Кол-во разбиений (n) должно быть целым положительным числом, проверь!");
+                        // Используем алгоритм с постоянным шагом
+                        answerLabel.Text = variuosMethod(a, b).ToString();
                     }
                 }
                 else
@@ -131,6 +147,7 @@ namespace Computationalmathematics
             {
                 MessageBox.Show("Левая граница (a) должна быть числом, проверь!");
             }
+
         }
 
 
@@ -223,9 +240,16 @@ namespace Computationalmathematics
                 currentItem.Checked = true;
             }
 
-            if (currentItem.Name == "")
+            // Переключаем доступность алгоритмов
+            if (алгоритмСПостояннымШагомToolStripMenuItem.Checked == true)
             {
-
+                label1.Visible = true;
+                textBoxN.Visible = true;
+            }
+            else if (сПеременнымШагомToolStripMenuItem.Checked == true)
+            {
+                label1.Visible = false;
+                textBoxN.Visible = false;
             }
 
         }
