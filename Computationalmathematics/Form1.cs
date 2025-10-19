@@ -20,7 +20,7 @@ namespace Computationalmathematics
         // Подинтегральная функция
         double F(double x)
         {
-            return (2*Math.Log(x) + x + 1); 
+            return (2*Math.Log(x) + x + 1);
         }
 
         // Метод левых прямоугольников
@@ -28,12 +28,11 @@ namespace Computationalmathematics
         {
             double h = (b - a) / n;
             double res = 0;
-            for (double i = a; i < b; i+=h)
+            for (uint i = 0; i < n; i++)
             {
-                res += F(i);
+                res += F(a + i * h);
             }
-
-            return h*res;
+            return h * res;
         }
 
         // Метод правых прямоугольников
@@ -41,23 +40,47 @@ namespace Computationalmathematics
         {
             double h = (b - a) / n;
             double res = 0;
-            for (double i = a + h; i <= b; i += h)
+            for (uint i = 1; i <= n; i++)
             {
-                res += F(i);
+                res += F(a + i * h);
             }
-
             return h * res;
         }
 
         // Метод трапеций
         double trapezoidMethod(double a, double b, uint n)
         {
-            double res = 0;
             double h = (b - a) / n;
+            double sum = F(a) + F(b); // концы
+            for (uint i = 1; i < n; i++)
+            {
+                sum += 2 * F(a + i * h);
+            }
+            return h / 2 * sum;
+        }
 
+        // Метод парабол
+        double parabolaMethod(double a, double b, uint n)
+        {
+            if (n % 2 != 0)
+                throw new ArgumentException("Для метода парабол n должно быть чётным");
 
+            double h = (b - a) / n;
+            double sum = F(a) + F(b); // x0 и xn
 
-            return res;
+            // Нечётные индексы: 1, 3, 5, ..., n-1 → коэффициент 4
+            for (uint i = 1; i < n; i += 2)
+            {
+                sum += 4 * F(a + i * h);
+            }
+
+            // Чётные индексы: 2, 4, ..., n-2 → коэффициент 2
+            for (uint i = 2; i < n; i += 2)
+            {
+                sum += 2 * F(a + i * h);
+            }
+
+            return sum * h / 3.0;
         }
 
 
@@ -83,23 +106,16 @@ namespace Computationalmathematics
                         }
                         else if (методТрапецийToolStripMenuItem.Checked == true)
                         {
-
-
-
+                            answerLabel.Text = trapezoidMethod(a, b, n).ToString();
                         }
                         else if (методПараболToolStripMenuItem.Checked == true)
                         {
-
+                            answerLabel.Text = parabolaMethod(a, b, n).ToString();
                         }
                         else
                         {
                             MessageBox.Show("ERROR METHOD!");
                         }
-
-
-
-
-
                     }
                     else
                     {
@@ -206,6 +222,12 @@ namespace Computationalmathematics
             {
                 currentItem.Checked = true;
             }
+
+            if (currentItem.Name == "")
+            {
+
+            }
+
         }
 
 

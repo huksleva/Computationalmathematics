@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|c:\\leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|solutionrelative:computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|c:\\leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|solutionrelative:computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -38,8 +38,8 @@
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form1.cs",
               "RelativeDocumentMoniker": "Computationalmathematics\\Form1.cs",
-              "ToolTip": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
-              "RelativeToolTip": "Computationalmathematics\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "ToolTip": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Computationalmathematics\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-18T13:36:48.972Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
@@ -50,9 +50,9 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form1.cs",
               "RelativeDocumentMoniker": "Computationalmathematics\\Form1.cs",
-              "ToolTip": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form1.cs*",
-              "RelativeToolTip": "Computationalmathematics\\Form1.cs*",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAAEIAAABXAAAAAAAAAA==",
+              "ToolTip": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form1.cs",
+              "RelativeToolTip": "Computationalmathematics\\Form1.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEAAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-18T13:36:49.004Z",
               "EditorCaption": ""
