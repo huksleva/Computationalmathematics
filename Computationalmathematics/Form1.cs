@@ -83,11 +83,49 @@ namespace Computationalmathematics
             return sum * h / 3.0;
         }
 
-        // Метод с переменным шагом
-        double variuosMethod(double a, double b)
-        {
 
-            return 5;
+
+        // Метод с переменным шагом
+
+        // Вспомогательная рекурсивная функция
+        // Передаём f(a), f(m), f(b), чтобы не вычислять их повторно
+        double AdaptiveSimpsonRecursive(
+            double a, double b, double eps,
+            double fa, double fm, double fb)
+        {
+            double m = (a + b) / 2;
+            double lm = (a + m) / 2; // середина левой половины
+            double rm = (m + b) / 2; // середина правой половины
+
+            double flm = F(lm);
+            double frm = F(rm);
+
+            // Формула Симпсона на всём отрезке [a, b]
+            double S = (b - a) / 6 * (fa + 4 * fm + fb);
+
+            // Сумма Симпсона по двум половинкам
+            double S2 = (m - a) / 6 * (fa + 4 * flm + fm) +
+                        (b - m) / 6 * (fm + 4 * frm + fb);
+
+            // Оценка погрешности
+            if (Math.Abs(S2 - S) <= 15 * eps)
+            {
+                // Формула Ричардсона: уточнённое значение
+                return S2 + (S2 - S) / 15;
+            }
+            else
+            {
+                // Рекурсивно интегрируем левую и правую части
+                double left = AdaptiveSimpsonRecursive(a, m, eps / 2, fa, flm, fm);
+                double right = AdaptiveSimpsonRecursive(m, b, eps / 2, fm, frm, fb);
+                return left + right;
+            }
+        }
+
+        // Основная функция: вычисляет интеграл от a до b с точностью eps
+        double AdaptiveSimpson(double a, double b, double eps)
+        {
+            return AdaptiveSimpsonRecursive(a, b, eps, F(a), F((a + b) / 2), F(b));
         }
 
 
@@ -135,7 +173,7 @@ namespace Computationalmathematics
                     else
                     {
                         // Используем алгоритм с постоянным шагом
-                        answerLabel.Text = variuosMethod(a, b).ToString();
+                        answerLabel.Text = AdaptiveSimpson(a, b, 0.000001).ToString();
                     }
                 }
                 else
@@ -149,11 +187,6 @@ namespace Computationalmathematics
             }
 
         }
-
-
-
-
-
 
 
 
