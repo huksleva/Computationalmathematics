@@ -231,15 +231,42 @@ namespace Computationalmathematics
             алгоритмToolStripMenuItem.DropDownItems.Clear();
             if (e.ClickedItem.Name == "ToolStripMenuItem1")
             {
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников левых частей");
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников правых частей");
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников правых частей");
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод парабол");
-
-                алгоритмToolStripMenuItem.DropDownItems.Add("Алгоритм с постоянным шагом");
-                алгоритмToolStripMenuItem.DropDownItems.Add("Алгоритм с переменным шагом");
+                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников левых частей").Name = "методПрямоугольниковЛевыхЧастейToolStripMenuItem";
+                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников правых частей").Name = "методПрямоугольниковПравыхЧастейToolStripMenuItem";
+                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников правых частей").Name = "методТрапецийToolStripMenuItem";
+                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод парабол").Name = "методПараболToolStripMenuItem";
+                методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true;
+                answerLabel.Text = "";
+                алгоритмToolStripMenuItem.DropDownItems.Add("Алгоритм с постоянным шагом").Name = "алгоритмСПостояннымШагомToolStripMenuItem";
+                алгоритмToolStripMenuItem.DropDownItems.Add("Алгоритм с переменным шагом").Name = "сПеременнымШагомToolStripMenuItem";
+                алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
             }
-            
+            else if (e.ClickedItem.Name == "ToolStripMenuItem2")
+            {
+
+
+
+
+
+
+            }
+            else if (e.ClickedItem.Name == "ToolStripMenuItem3")
+            {
+
+            }
+            else if (e.ClickedItem.Name == "ToolStripMenuItem4")
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("ERROR TYPE TASK");
+            }
+
+
+
+
+
 
         }
 
