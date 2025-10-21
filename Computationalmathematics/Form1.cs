@@ -128,7 +128,43 @@ namespace Computationalmathematics
             return AdaptiveSimpsonRecursive(a, b, eps, F(a), F((a + b) / 2), F(b));
         }
 
+        // Вспомогательные функции
+        private void calculateIntegral(double a, double b, uint n)
+        {
+            // Начинаем считать
+            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
+            {
+                answerLabel.Text = leftRectangleMethod(a, b, n).ToString();
+            }
+            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
+            {
+                answerLabel.Text = rightRectangleMethod(a, b, n).ToString();
+            }
+            else if (методТрапецийToolStripMenuItem.Checked == true)
+            {
+                answerLabel.Text = trapezoidMethod(a, b, n).ToString();
+            }
+            else if (методПараболToolStripMenuItem.Checked == true)
+            {
+                answerLabel.Text = parabolaMethod(a, b, n).ToString();
+            }
+            else
+            {
+                MessageBox.Show("ERROR METHOD!");
+            }
+        }
+        private void calculateNotLinearEquation()
+        {
 
+        }
+        private void calculateDifferentialEquation()
+        {
+
+        }
+        private void calculateElementaryFunction()
+        {
+
+        }
 
         // Нажатие на кнопку - вычисление примера
         private void button1_Click(object sender, EventArgs e)
@@ -143,26 +179,25 @@ namespace Computationalmathematics
                     {
                         if (uint.TryParse(textBoxN.Text, out uint n))
                         {
-                            // Начинаем считать
-                            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
+                            if (ToolStripMenuItem1.Checked == true)
                             {
-                                answerLabel.Text = leftRectangleMethod(a, b, n).ToString();
+                                calculateIntegral(a, b, n);
                             }
-                            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
+                            else if (ToolStripMenuItem2.Checked == true)
                             {
-                                answerLabel.Text = rightRectangleMethod(a, b, n).ToString();
+                                calculateDifferentialEquation();
                             }
-                            else if (методТрапецийToolStripMenuItem.Checked == true)
+                            else if (ToolStripMenuItem2.Checked == true)
                             {
-                                answerLabel.Text = trapezoidMethod(a, b, n).ToString();
+                                calculateNotLinearEquation();
                             }
-                            else if (методПараболToolStripMenuItem.Checked == true)
+                            else if (ToolStripMenuItem2.Checked == true)
                             {
-                                answerLabel.Text = parabolaMethod(a, b, n).ToString();
+                                calculateElementaryFunction();
                             }
                             else
                             {
-                                MessageBox.Show("ERROR METHOD!");
+                                MessageBox.Show("ERROR TYPE TASK");
                             }
                         }
                         else
@@ -190,9 +225,6 @@ namespace Computationalmathematics
 
 
 
-
-
-
         // При загрузке формы
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -201,75 +233,158 @@ namespace Computationalmathematics
             алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
         }
 
+        // Вспомогательный метод для добавления пункта с Checked
+        private ToolStripMenuItem AddCheckableItem(ToolStripItemCollection items, string text, string name, bool isChecked = false)
+        {
+            var item = new ToolStripMenuItem(text) { Name = name, Checked = isChecked };
+            items.Add(item);
+            return item;
+        }
+
+        // Вспомогательные методы
+        private void SetupNumericalIntegrationMethods()
+        {
+            численныйМетодToolStripMenuItem.DropDownItems.Clear();
+            алгоритмToolStripMenuItem.DropDownItems.Clear();
+
+            // Численные методы
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников левых частей", "методПрямоугольниковЛевыхЧастейToolStripMenuItem", true);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников правых частей", "методПрямоугольниковПравыхЧастейToolStripMenuItem");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод трапеций", "методТрапецийToolStripMenuItem");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод парабол", "методПараболToolStripMenuItem");
+
+            // Алгоритмы
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "алгоритмСПостояннымШагомToolStripMenuItem", true);
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "сПеременнымШагомToolStripMenuItem");
+
+            answerLabel.Text = "";
+            primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";
+        }
+
+        private void SetupDifferentialEquationsMethods()
+        {
+            численныйМетодToolStripMenuItem.DropDownItems.Clear();
+            алгоритмToolStripMenuItem.DropDownItems.Clear();
+
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Эйлера", "эйлер", true);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Рунге-Кутта", "рк");
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "С фиксированным шагом", "фиксированныйШаг", true);
+
+            primerLabel.Text = "y' + y^2 - cos(x) - 1 = ";
+            answerLabel.Text = "";
+        }
+
+        private void SetupnotLinearEquationsMethods()
+        {
+            численныйМетодToolStripMenuItem.DropDownItems.Clear();
+            алгоритмToolStripMenuItem.DropDownItems.Clear();
+
+            // Численные методы для нелинейных уравнений
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод половинного деления", "bisection", true);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Ньютона (касательных)", "newton");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод хорд", "secant");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод простой итерации", "simpleIteration");
+
+            // Для нелинейных уравнений обычно используется постоянный или адаптивный контроль сходимости,
+            // но шаг N может не требоваться — поэтому скроем поле ввода N
+            // (видимость будет управляться в обработчике клика по алгоритму)
+
+            // Алгоритмы (можно оставить те же, или упростить)
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
+
+            primerLabel.Text = "f(x) = e^x + x^3 - ln(x)";
+            answerLabel.Text = "";
+        }
+
+        private void SetupelementaryFunctionsMethod()
+        {
+            численныйМетодToolStripMenuItem.DropDownItems.Clear();
+            алгоритмToolStripMenuItem.DropDownItems.Clear();
+
+            численныйМетодToolStripMenuItem.DropDownItems.Clear();
+            алгоритмToolStripMenuItem.DropDownItems.Clear();
+
+            // Методы для работы с элементарными функциями
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Разложение в ряд Тейлора", "taylor", true);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное дифференцирование", "differentiation");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное интегрирование", "integration"); // если нужно
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Вычисление функции напрямую", "direct");
+
+            // Алгоритмы — обычно требуется указать количество членов ряда или шаг
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
+
+            primerLabel.Text = "e^x + x^2 - ln(x) + x = ";
+            answerLabel.Text = "";
+        }
+
+
+
+
 
         // Переключение Типов задач
         private void ТипЗадачиToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             // Сбросить Checked у всех пунктов
             foreach (ToolStripMenuItem item in типЗадачиToolStripMenuItem.DropDownItems)
-            {
                 item.Checked = false;
-            }
 
-            // Получить текущий (кликнутый) элемент
+            // Установить Checked для выбранного
             if (e.ClickedItem is ToolStripMenuItem currentItem)
-            {
-                // Установить Checked = true именно для него
                 currentItem.Checked = true;
-            }
 
-
-
-            // Меняем содержание всей формы
-            // Меняем название
+            // Обновить заголовок
             nameOftask_label.Text = e.ClickedItem.Text;
 
-            // Меняем остальное меню
-            // Меняем численный метод и алгоритм
-
-            численныйМетодToolStripMenuItem.DropDownItems.Clear();
-            алгоритмToolStripMenuItem.DropDownItems.Clear();
-            if (e.ClickedItem.Name == "ToolStripMenuItem1")
+            // Выбрать конфигурацию подменю по имени
+            switch (e.ClickedItem.Name)
             {
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников левых частей").Name = "методПрямоугольниковЛевыхЧастейToolStripMenuItem";
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников правых частей").Name = "методПрямоугольниковПравыхЧастейToolStripMenuItem";
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод прямоугольников правых частей").Name = "методТрапецийToolStripMenuItem";
-                численныйМетодToolStripMenuItem.DropDownItems.Add("Метод парабол").Name = "методПараболToolStripMenuItem";
-                методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true;
-                answerLabel.Text = "";
-                алгоритмToolStripMenuItem.DropDownItems.Add("Алгоритм с постоянным шагом").Name = "алгоритмСПостояннымШагомToolStripMenuItem";
-                алгоритмToolStripMenuItem.DropDownItems.Add("Алгоритм с переменным шагом").Name = "сПеременнымШагомToolStripMenuItem";
-                алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
+                case "ToolStripMenuItem1":
+                    SetupNumericalIntegrationMethods();
+                    break;
+                case "ToolStripMenuItem2":
+                    SetupDifferentialEquationsMethods();
+                    break;
+                case "ToolStripMenuItem3":
+                    SetupnotLinearEquationsMethods();
+                    break;
+                case "ToolStripMenuItem4":
+                    SetupelementaryFunctionsMethod();
+                    break;
+                default:
+                    MessageBox.Show("Неизвестный тип задачи");
+                    break;
             }
-            else if (e.ClickedItem.Name == "ToolStripMenuItem2")
+
+
+
+
+
+            
+
+            if (ToolStripMenuItem1.Checked == true)
             {
-
-
-
-
-
-
-            }
-            else if (e.ClickedItem.Name == "ToolStripMenuItem3")
-            {
-
-            }
-            else if (e.ClickedItem.Name == "ToolStripMenuItem4")
-            {
-
+                textA.Visible = true;
+                textB.Visible = true;
             }
             else
             {
-                MessageBox.Show("ERROR TYPE TASK");
+                textA.Visible = false;
+                textB.Visible = false;
             }
 
-
-
-
-
-
+            if (ToolStripMenuItem2.Checked == true)
+            {
+                label1.Visible = false;
+                textBoxN.Visible = false;
+            }
+            else
+            {
+                label1.Visible = true;
+                textBoxN.Visible = true;
+            }
         }
-
 
         // Переключение Численного метода
         private void ЧисленныйМетодToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -285,33 +400,26 @@ namespace Computationalmathematics
             }
         }
 
-
-
         // Переключение Алгоритма
         private void АлгоритмToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             foreach (ToolStripMenuItem item in алгоритмToolStripMenuItem.DropDownItems)
-            {
                 item.Checked = false;
-            }
 
             if (e.ClickedItem is ToolStripMenuItem currentItem)
-            {
                 currentItem.Checked = true;
-            }
 
-            // Переключаем доступность алгоритмов
-            if (алгоритмСПостояннымШагомToolStripMenuItem.Checked == true)
+            // Используем Name, который вы задали при создании пунктов!
+            if (e.ClickedItem.Name == "алгоритмСПостояннымШагомToolStripMenuItem")
             {
                 label1.Visible = true;
                 textBoxN.Visible = true;
             }
-            else if (сПеременнымШагомToolStripMenuItem.Checked == true)
+            else if (e.ClickedItem.Name == "сПеременнымШагомToolStripMenuItem")
             {
                 label1.Visible = false;
                 textBoxN.Visible = false;
             }
-
         }
 
 
