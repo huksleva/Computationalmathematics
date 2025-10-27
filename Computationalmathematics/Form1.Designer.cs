@@ -178,6 +178,7 @@
             this.nameOftask_label.TabIndex = 4;
             this.nameOftask_label.Text = "Численное интегрирование";
             this.nameOftask_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.nameOftask_label.Click += new System.EventHandler(this.nameOftask_label_Click);
             // 
             // primerLabel
             // 
