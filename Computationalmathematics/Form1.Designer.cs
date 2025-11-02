@@ -45,8 +45,8 @@
             this.сПеременнымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nameOftask_label = new System.Windows.Forms.Label();
             this.primerLabel = new System.Windows.Forms.Label();
-            this.textA = new System.Windows.Forms.TextBox();
             this.textB = new System.Windows.Forms.TextBox();
+            this.textA = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -190,23 +190,23 @@
             this.primerLabel.TabIndex = 5;
             this.primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";
             // 
-            // textA
-            // 
-            this.textA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textA.Location = new System.Drawing.Point(12, 97);
-            this.textA.Name = "textA";
-            this.textA.Size = new System.Drawing.Size(30, 23);
-            this.textA.TabIndex = 6;
-            this.textA.Text = "1";
-            // 
             // textB
             // 
             this.textB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textB.Location = new System.Drawing.Point(12, 177);
+            this.textB.Location = new System.Drawing.Point(12, 97);
             this.textB.Name = "textB";
             this.textB.Size = new System.Drawing.Size(30, 23);
-            this.textB.TabIndex = 7;
+            this.textB.TabIndex = 6;
             this.textB.Text = "5";
+            // 
+            // textA
+            // 
+            this.textA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textA.Location = new System.Drawing.Point(12, 177);
+            this.textA.Name = "textA";
+            this.textA.Size = new System.Drawing.Size(30, 23);
+            this.textA.TabIndex = 7;
+            this.textA.Text = "1";
             // 
             // button1
             // 
@@ -258,8 +258,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxN);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textB);
             this.Controls.Add(this.textA);
+            this.Controls.Add(this.textB);
             this.Controls.Add(this.primerLabel);
             this.Controls.Add(this.nameOftask_label);
             this.Controls.Add(this.menuStrip1);
@@ -267,7 +267,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "ЛР_1_ВМ. Численное интегрирование. Тоц Л. А., ИВТ-2.";
+            this.Text = "Я";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -293,8 +293,8 @@
         private System.Windows.Forms.ToolStripMenuItem алгоритмСПостояннымШагомToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сПеременнымШагомToolStripMenuItem;
         private System.Windows.Forms.Label primerLabel;
-        private System.Windows.Forms.TextBox textA;
         private System.Windows.Forms.TextBox textB;
+        private System.Windows.Forms.TextBox textA;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBoxN;
         private System.Windows.Forms.Label label1;

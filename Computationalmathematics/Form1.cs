@@ -17,16 +17,13 @@ namespace Computationalmathematics
             InitializeComponent();
         }
 
-        // Интеграл
-        public static class integral
+
+        public static class Integral
         {
-            // Подинтегральная функция
             public static double integralF(double x)
             {
-                return (2 * Math.Log(x) + x + 1);
+                return 2 * Math.Log(x) + x + 1;
             }
-
-            // Метод левых прямоугольников
             public static double leftRectangleMethod(double a, double b, uint n)
             {
                 double h = (b - a) / n;
@@ -37,8 +34,6 @@ namespace Computationalmathematics
                 }
                 return h * res;
             }
-
-            // Метод правых прямоугольников
             public static double rightRectangleMethod(double a, double b, uint n)
             {
                 double h = (b - a) / n;
@@ -49,8 +44,6 @@ namespace Computationalmathematics
                 }
                 return h * res;
             }
-
-            // Метод трапеций
             public static double trapezoidMethod(double a, double b, uint n)
             {
                 double h = (b - a) / n;
@@ -61,8 +54,6 @@ namespace Computationalmathematics
                 }
                 return h / 2 * sum;
             }
-
-            // Метод парабол
             public static double parabolaMethod(double a, double b, uint n)
             {
                 if (n % 2 != 0)
@@ -85,49 +76,85 @@ namespace Computationalmathematics
 
                 return sum * h / 3.0;
             }
+            public static double AdaptiveSimpsonRecursive(double a, double b, double eps, double fa, double fm, double fb)
+            {
+                double m = (a + b) / 2;
+                double lm = (a + m) / 2; // середина левой половины
+                double rm = (m + b) / 2; // середина правой половины
+
+
+                double flm = integralF(lm);
+                double frm = integralF(rm);
+
+                // Формула Симпсона на всём отрезке [a, b]
+                double S = (b - a) / 6 * (fa + 4 * fm + fb);
+
+                // Сумма Симпсона по двум половинкам
+                double S2 = (m - a) / 6 * (fa + 4 * flm + fm) +
+                            (b - m) / 6 * (fm + 4 * frm + fb);
+
+                // Оценка погрешности
+                if (Math.Abs(S2 - S) <= 15 * eps)
+                {
+                    // Формула Ричардсона: уточнённое значение
+                    return S2 + (S2 - S) / 15;
+                }
+                else
+                {
+                    // Рекурсивно интегрируем левую и правую части
+                    double left = AdaptiveSimpsonRecursive(a, m, eps / 2, fa, flm, fm);
+                    double right = AdaptiveSimpsonRecursive(m, b, eps / 2, fm, frm, fb);
+                    return left + right;
+                }
+            }
+            public static double AdaptiveSimpson(double a, double b, double eps)
+            {
+                return AdaptiveSimpsonRecursive(a, b, eps, integralF(a), integralF((a + b) / 2), integralF(b));
+            }
         }
-
-
-        // Нелинейное уравнение
-
-        // f(x) = x^3 - 2x + sin(x) + 1
-        double NonLinearF(double x)
+        public static class DiffEqualation
         {
-            return Math.Pow(x, 3) - 2 * x + Math.Sin(x) + 1;
-        }
 
-        // f'(x) = 3x^2 - 2 + cos(x)  — нужно для метода Ньютона
-        double NonLinearDF(double x)
+        }
+        public static class NonLinearEqualation
+        {
+            public static double Phi(double x)
+            {
+                return (Math.Pow(x, 3) + Math.Sin(x) + 1) / 2.0;
+            }
+            public static double NonLinearF(double x)
+            {
+                return Math.Pow(x, 3) - 2 * x + Math.Sin(x) + 1;
+            }
+            public static double NonLinearDF(double x)
             {
                 return 3 * x * x - 2 + Math.Cos(x);
             }
-
-        double BisectionMethod(double a, double b, double eps, uint maxIter)
-        {
-            double fa = NonLinearF(a);
-            double fb = NonLinearF(b);
-
-            if (fa * fb > 0)
-                throw new ArgumentException("Нет корня на интервале [a, b]");
-
-            for (uint i = 0; i < maxIter; i++)
+            public static double BisectionMethod(double a, double b, double eps, uint maxIter)
             {
-                double c = (a + b) / 2;
-                double fc = NonLinearF(c);
+                double fa = NonLinearF(a);
+                double fb = NonLinearF(b);
 
-                if (Math.Abs(fc) < eps || (b - a) / 2 < eps)
-                    return c;
+                if (fa * fb > 0)
+                    throw new ArgumentException("Нет корня на интервале [a, b]");
 
-                if (fa * fc < 0)
-                    b = c;
-                else
-                    a = c;
+                for (uint i = 0; i < maxIter; i++)
+                {
+                    double c = (a + b) / 2;
+                    double fc = NonLinearF(c);
+
+                    if (Math.Abs(fc) < eps || (b - a) / 2 < eps)
+                        return c;
+
+                    if (fa * fc < 0)
+                        b = c;
+                    else
+                        a = c;
+                }
+
+                return (a + b) / 2;
             }
-
-            return (a + b) / 2;
-        }
-
-        double NewtonMethod(double x0, double eps, uint maxIter)
+            public static double NewtonMethod(double x0, double eps, uint maxIter)
             {
                 double x = x0;
 
@@ -149,8 +176,7 @@ namespace Computationalmathematics
 
                 return x;
             }
-
-        double SecantMethod(double x0, double x1, double eps, uint maxIter)
+            public static double SecantMethod(double x0, double x1, double eps, uint maxIter)
             {
                 double f0 = NonLinearF(x0);
                 double f1 = NonLinearF(x1);
@@ -172,14 +198,7 @@ namespace Computationalmathematics
 
                 return x1;
             }
-
-        // φ(x) = (x^3 + sin(x) + 1) / 2
-        double Phi(double x)
-            {
-                return (Math.Pow(x, 3) + Math.Sin(x) + 1) / 2.0;
-            }
-
-        double SimpleIterationMethod(double a, double b, double eps, uint maxIter)
+            public static double SimpleIterationMethod(double a, double b, double eps, uint maxIter)
             {
                 // Начальное приближение — середина интервала
                 double x = (a + b) / 2;
@@ -203,198 +222,114 @@ namespace Computationalmathematics
 
                 return x;
             }
-
-        string calculateNotLinearEquation(string textA, string textB, string textN)
-        {
-            const double eps = 1e-8;
-            uint maxIter = 100; // по умолчанию
-
-            // Попытаемся прочитать n как макс. число итераций
-            if (uint.TryParse(textN, out uint nFromInput) && nFromInput > 0)
-                maxIter = nFromInput;
-
-            try
+            public static void calculateNotLinearEquation(string A, string B, string N, Label label)
             {
-                double result;
+                const double eps = 1e-8;
+                uint maxIter = 100; // по умолчанию
 
+                // Попытаемся прочитать n как макс. число итераций
+                if (uint.TryParse(N, out uint nFromInput) && nFromInput > 0)
+                    maxIter = nFromInput;
 
-                if (true) // BisectionMethod
+                try
                 {
-                    if (!double.TryParse(textA, out double a) || !double.TryParse(textB, out double b))
-                        throw new ArgumentException("Введите a и b (границы интервала)");
+                    double result;
 
-                    double fa = NonLinearF(a);
-                    double fb = NonLinearF(b);
-                    if (fa * fb > 0)
-                        throw new ArgumentException("f(a) и f(b) должны иметь разные знаки");
+
+                    if (true) // BisectionMethod
+                    {
+                        if (!double.TryParse(A, out double a) || !double.TryParse(B, out double b))
+                            throw new ArgumentException("Введите a и b (границы интервала)");
+
+                        double fa = NonLinearF(a);
+                        double fb = NonLinearF(b);
+                        if (fa * fb > 0)
+                            throw new ArgumentException("f(a) и f(b) должны иметь разные знаки");
                         
-                    result = BisectionMethod(a, b, eps, maxIter);
-                }
-                else if (true) //newton
-                {
-                    if (!double.TryParse(textA, out double x0))
-                        throw new ArgumentException("Введите начальное приближение x0");
+                        result = BisectionMethod(a, b, eps, maxIter);
+                    }
+                    else if (true) //newton
+                    {
+                        if (!double.TryParse(A, out double x0))
+                            throw new ArgumentException("Введите начальное приближение x0");
 
-                    result = NewtonMethod(x0, eps, maxIter);
-                }
-                else if (true) //secant
-                {
-                    if (!double.TryParse(textA, out double x0) || !double.TryParse(textB, out double x1))
-                        throw new ArgumentException("Введите два начальных приближения: x0 и x1");
+                        result = NewtonMethod(x0, eps, maxIter);
+                    }
+                    else if (true) //secant
+                    {
+                        if (!double.TryParse(A, out double x0) || !double.TryParse(B, out double x1))
+                            throw new ArgumentException("Введите два начальных приближения: x0 и x1");
 
-                    result = SecantMethod(x0, x1, eps, maxIter);
-                }
-                else if (true) //simpleIteration
-                {
-                    if (!double.TryParse(textA, out double a) || !double.TryParse(textB, out double b))
-                        throw new ArgumentException("Введите интервал [a, b]");
+                        result = SecantMethod(x0, x1, eps, maxIter);
+                    }
+                    else if (true) //simpleIteration
+                    {
+                        if (!double.TryParse(A, out double a) || !double.TryParse(B, out double b))
+                            throw new ArgumentException("Введите интервал [a, b]");
 
-                    // Для метода простой итерации нужно привести уравнение к виду x = φ(x)
-                    // Возьмём: φ(x) = (x^3 + sin(x) + 1) / 2  → из x^3 - 2x + sin(x) + 1 = 0 ⇒ 2x = x^3 + sin(x) + 1
-                    result = SimpleIterationMethod(a, b, eps, maxIter);
-                }
-                else
-                {
-                    throw new ArgumentException("Не выбран метод решения");
-                }
+                        // Для метода простой итерации нужно привести уравнение к виду x = φ(x)
+                        // Возьмём: φ(x) = (x^3 + sin(x) + 1) / 2  → из x^3 - 2x + sin(x) + 1 = 0 ⇒ 2x = x^3 + sin(x) + 1
+                        result = SimpleIterationMethod(a, b, eps, maxIter);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Не выбран метод решения");
+                    }
 
-                return result.ToString("F10");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка в вычислении: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return "";
+                    label.Text = result.ToString("F10");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка в вычислении: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
-
-       
-
-
-
-
-
-        // Метод с переменным шагом
-
-        // Вспомогательная рекурсивная функция
-        // Передаём f(a), f(m), f(b), чтобы не вычислять их повторно
-        double AdaptiveSimpsonRecursive(
-            double a, double b, double eps,
-            double fa, double fm, double fb)
+        public static class ElementaryFun
         {
-            double m = (a + b) / 2;
-            double lm = (a + m) / 2; // середина левой половины
-            double rm = (m + b) / 2; // середина правой половины
 
-            
-            
-
-            
-            
-            double flm = integral.integralF(lm);
-            double frm = integral.integralF(rm);
-
-            // Формула Симпсона на всём отрезке [a, b]
-            double S = (b - a) / 6 * (fa + 4 * fm + fb);
-
-            // Сумма Симпсона по двум половинкам
-            double S2 = (m - a) / 6 * (fa + 4 * flm + fm) +
-                        (b - m) / 6 * (fm + 4 * frm + fb);
-
-            // Оценка погрешности
-            if (Math.Abs(S2 - S) <= 15 * eps)
-            {
-                // Формула Ричардсона: уточнённое значение
-                return S2 + (S2 - S) / 15;
-            }
-            else
-            {
-                // Рекурсивно интегрируем левую и правую части
-                double left = AdaptiveSimpsonRecursive(a, m, eps / 2, fa, flm, fm);
-                double right = AdaptiveSimpsonRecursive(m, b, eps / 2, fm, frm, fb);
-                return left + right;
-            }
         }
 
-        // Основная функция: вычисляет интеграл от a до b с точностью eps
-        double AdaptiveSimpson(double a, double b, double eps)
-        {
-            return AdaptiveSimpsonRecursive(a, b, eps, integral.integralF(a), integral.integralF((a + b) / 2), integral.integralF(b));
-        }
+
+
+
+
+
+
+
 
         // Вспомогательные функции
-        private void calculateIntegral(double a, double b, uint n)
+        private void calculateIntegral()
         {
-            // Начинаем считать
-            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
-            {
-                answerLabel.Text = integral.leftRectangleMethod(a, b, n).ToString();
-            }
-            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
-            {
-                answerLabel.Text = integral.rightRectangleMethod(a, b, n).ToString();
-            }
-            else if (методТрапецийToolStripMenuItem.Checked == true)
-            {
-                answerLabel.Text = integral.trapezoidMethod(a, b, n).ToString();
-            }
-            else if (методПараболToolStripMenuItem.Checked == true)
-            {
-                answerLabel.Text = integral.parabolaMethod(a, b, n).ToString();
-            }
-            else
-            {
-                MessageBox.Show("ERROR METHOD!");
-            }
-        }
-
-
-
-        private void calculateNotLinearEquations()
-        {
-            answerLabel.Text = calculateNotLinearEquation(textA.Text, textB.Text, textBoxN.Text);
-        }
-        private void calculateDifferentialEquations()
-        {
-
-        }
-        private void calculateElementaryFunctions()
-        {
-
-        }
-
-        // Нажатие на кнопку - вычисление примера
-        private void button1_Click(object sender, EventArgs e)
-        {   
             // Проверка на то что a, b, n - числа
-            if (double.TryParse(textA.Text, out double a))
+            if (double.TryParse(textB.Text, out double b))
             {
-                if (double.TryParse(textB.Text, out double b))
+                if (double.TryParse(textA.Text, out double a))
                 {
                     // Используем алгоритм с постоянным шагом
-                    if (textBoxN.Visible == true && label1.Visible == true)
+                    if (textBoxN.Visible && label1.Visible)
                     {
                         if (uint.TryParse(textBoxN.Text, out uint n))
                         {
-                            if (ToolStripMenuItem1.Checked == true)
+                            // Начинаем считать
+                            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
                             {
-                                calculateIntegral(a, b, n);
+                                answerLabel.Text = Integral.leftRectangleMethod(a, b, n).ToString();
                             }
-                            else if (ToolStripMenuItem2.Checked == true)
+                            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
                             {
-                                calculateDifferentialEquations();
+                                answerLabel.Text = Integral.rightRectangleMethod(a, b, n).ToString();
                             }
-                            else if (ToolStripMenuItem2.Checked == true)
+                            else if (методТрапецийToolStripMenuItem.Checked == true)
                             {
-                                calculateNotLinearEquations();
+                                answerLabel.Text = Integral.trapezoidMethod(a, b, n).ToString();
                             }
-                            else if (ToolStripMenuItem2.Checked == true)
+                            else if (методПараболToolStripMenuItem.Checked == true)
                             {
-                                calculateElementaryFunctions();
+                                answerLabel.Text = Integral.parabolaMethod(a, b, n).ToString();
                             }
                             else
                             {
-                                MessageBox.Show("ERROR TYPE TASK");
+                                MessageBox.Show("ERROR METHOD!");
                             }
                         }
                         else
@@ -402,10 +337,10 @@ namespace Computationalmathematics
                             MessageBox.Show("Кол-во разбиений (n) должно быть целым положительным числом, проверь!");
                         }
                     }
+                    // Используем алгоритм с постоянным шагом
                     else
                     {
-                        // Используем алгоритм с постоянным шагом
-                        answerLabel.Text = AdaptiveSimpson(a, b, 0.000001).ToString();
+                        answerLabel.Text = Integral.AdaptiveSimpson(a, b, 0.000001).ToString();
                     }
                 }
                 else
@@ -418,6 +353,54 @@ namespace Computationalmathematics
                 MessageBox.Show("Левая граница (a) должна быть числом, проверь!");
             }
 
+
+
+
+
+
+
+
+
+        }
+        private void calculateDifferentialEquation()
+        {
+
+        }
+        private void calculateNonLinearEqualation()
+        {
+
+        }
+        private void calculateElementaryFunctions()
+        {
+
+        }
+
+
+
+
+        // Нажатие на кнопку - вычисление примера
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ToolStripMenuItem1.Checked == true)
+            {
+                calculateIntegral();
+            }
+            else if (ToolStripMenuItem2.Checked == true)
+            {
+                calculateDifferentialEquation();
+            }
+            else if (ToolStripMenuItem3.Checked == true)
+            {
+                calculateNonLinearEqualation();
+            }
+            else if (ToolStripMenuItem4.Checked == true)
+            {
+                calculateElementaryFunctions();
+            }
+            else
+            {
+                MessageBox.Show("ERROR TYPE TASK");
+            }
         }
 
 
@@ -562,13 +545,13 @@ namespace Computationalmathematics
 
             if (ToolStripMenuItem1.Checked == true)
             {
-                textA.Visible = true;
                 textB.Visible = true;
+                textA.Visible = true;
             }
             else
             {
-                textA.Visible = false;
                 textB.Visible = false;
+                textA.Visible = false;
             }
 
             if (ToolStripMenuItem2.Checked == true)

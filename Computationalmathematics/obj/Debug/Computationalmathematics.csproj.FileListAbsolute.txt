@@ -19,3 +19,7 @@ C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debu
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.CoreCompileInputs.cache
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.pdb
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.exe.manifest
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.application
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe.manifest
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.application
