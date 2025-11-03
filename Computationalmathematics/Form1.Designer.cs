@@ -51,6 +51,13 @@
             this.textBoxN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.answerLabel = new System.Windows.Forms.Label();
+            this.labelX0 = new System.Windows.Forms.Label();
+            this.labelY0 = new System.Windows.Forms.Label();
+            this.textBoxX0 = new System.Windows.Forms.TextBox();
+            this.textBoxY0 = new System.Windows.Forms.TextBox();
+            this.label_Interval = new System.Windows.Forms.Label();
+            this.textBox_IntervalA = new System.Windows.Forms.TextBox();
+            this.textBox_IntervalB = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,12 +255,75 @@
             this.answerLabel.Size = new System.Drawing.Size(0, 63);
             this.answerLabel.TabIndex = 11;
             // 
+            // labelX0
+            // 
+            this.labelX0.AutoSize = true;
+            this.labelX0.Location = new System.Drawing.Point(0, 289);
+            this.labelX0.Name = "labelX0";
+            this.labelX0.Size = new System.Drawing.Size(29, 13);
+            this.labelX0.TabIndex = 12;
+            this.labelX0.Text = "Xo =";
+            this.labelX0.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // labelY0
+            // 
+            this.labelY0.AutoSize = true;
+            this.labelY0.Location = new System.Drawing.Point(0, 312);
+            this.labelY0.Name = "labelY0";
+            this.labelY0.Size = new System.Drawing.Size(29, 13);
+            this.labelY0.TabIndex = 13;
+            this.labelY0.Text = "Yo =";
+            // 
+            // textBoxX0
+            // 
+            this.textBoxX0.Location = new System.Drawing.Point(35, 286);
+            this.textBoxX0.Name = "textBoxX0";
+            this.textBoxX0.Size = new System.Drawing.Size(85, 20);
+            this.textBoxX0.TabIndex = 14;
+            // 
+            // textBoxY0
+            // 
+            this.textBoxY0.Location = new System.Drawing.Point(35, 312);
+            this.textBoxY0.Name = "textBoxY0";
+            this.textBoxY0.Size = new System.Drawing.Size(85, 20);
+            this.textBoxY0.TabIndex = 15;
+            // 
+            // label_Interval
+            // 
+            this.label_Interval.AutoSize = true;
+            this.label_Interval.Location = new System.Drawing.Point(0, 345);
+            this.label_Interval.Name = "label_Interval";
+            this.label_Interval.Size = new System.Drawing.Size(217, 13);
+            this.label_Interval.TabIndex = 16;
+            this.label_Interval.Text = "На интервале от                                      до";
+            // 
+            // textBox_IntervalA
+            // 
+            this.textBox_IntervalA.Location = new System.Drawing.Point(93, 342);
+            this.textBox_IntervalA.Name = "textBox_IntervalA";
+            this.textBox_IntervalA.Size = new System.Drawing.Size(101, 20);
+            this.textBox_IntervalA.TabIndex = 17;
+            // 
+            // textBox_IntervalB
+            // 
+            this.textBox_IntervalB.Location = new System.Drawing.Point(223, 342);
+            this.textBox_IntervalB.Name = "textBox_IntervalB";
+            this.textBox_IntervalB.Size = new System.Drawing.Size(101, 20);
+            this.textBox_IntervalB.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(738, 371);
+            this.Controls.Add(this.textBox_IntervalB);
+            this.Controls.Add(this.textBox_IntervalA);
+            this.Controls.Add(this.label_Interval);
+            this.Controls.Add(this.textBoxY0);
+            this.Controls.Add(this.textBoxX0);
+            this.Controls.Add(this.labelY0);
+            this.Controls.Add(this.labelX0);
             this.Controls.Add(this.answerLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxN);
@@ -299,6 +369,13 @@
         private System.Windows.Forms.TextBox textBoxN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label answerLabel;
+        private System.Windows.Forms.Label labelX0;
+        private System.Windows.Forms.Label labelY0;
+        private System.Windows.Forms.TextBox textBoxX0;
+        private System.Windows.Forms.TextBox textBoxY0;
+        private System.Windows.Forms.Label label_Interval;
+        private System.Windows.Forms.TextBox textBox_IntervalA;
+        private System.Windows.Forms.TextBox textBox_IntervalB;
     }
 }
 

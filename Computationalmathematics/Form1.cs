@@ -450,7 +450,7 @@ namespace Computationalmathematics
             AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Рунге-Кутта", "рк");
             AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "С фиксированным шагом", "фиксированныйШаг", true);
 
-            primerLabel.Text = "y' + y^2 - cos(x) - 1 = ";
+            primerLabel.Text = "y + 4(y²)'' + cos(x) - (3x)' = ";
             answerLabel.Text = "";
         }
 
@@ -543,7 +543,7 @@ namespace Computationalmathematics
 
             
 
-            if (ToolStripMenuItem1.Checked == true)
+            if (ToolStripMenuItem1.Checked)
             {
                 textB.Visible = true;
                 textA.Visible = true;
@@ -554,7 +554,7 @@ namespace Computationalmathematics
                 textA.Visible = false;
             }
 
-            if (ToolStripMenuItem2.Checked == true)
+            if (ToolStripMenuItem2.Checked)
             {
                 label1.Visible = false;
                 textBoxN.Visible = false;
@@ -678,6 +678,11 @@ namespace Computationalmathematics
         }
 
         private void nameOftask_label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
