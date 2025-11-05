@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Computationalmathematics.Computationalmathematics;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,17 +18,60 @@ namespace Computationalmathematics
             InitializeComponent();
         }
 
-        // Интеграл
-        class integral
-        {
-            // Подинтегральная функция
-            double integralF(double x)
-            {
-                return (2 * Math.Log(x) + x + 1);
-            }
 
-            // Метод левых прямоугольников
-            double leftRectangleMethod(double a, double b, uint n)
+
+        
+            public static class MenuNames
+            {
+                // Типы задач
+                //public const string NumericalIntegration = "ToolStripMenuItem1";
+                //public const string DifferentialEquations = "ToolStripMenuItem2";
+                //public const string NonLinearEquations = "ToolStripMenuItem3";
+                //public const string ElementaryFunctions = "ToolStripMenuItem4";
+
+                // Численные методы — интегрирование
+                public const string LeftRectangles = "методПрямоугольниковЛевыхЧастейToolStripMenuItem";
+                public const string RightRectangles = "методПрямоугольниковПравыхЧастейToolStripMenuItem";
+                public const string Trapezoid = "методТрапецийToolStripMenuItem";
+                public const string Parabola = "методПараболToolStripMenuItem";
+
+                // Численные методы — нелинейные уравнения
+                public const string Bisection = "bisection";
+                public const string Newton = "newton";
+                public const string Secant = "secant";
+                public const string SimpleIteration = "simpleIteration";
+
+                // Численные методы — диффуры
+                public const string Euler = "эйлерStripMenuItem";
+                public const string RungeKutta = "ркStripMenuItem";
+
+                // Алгоритмы
+                public const string FixedStep = "алгоритмСПостояннымШагомToolStripMenuItem";
+                public const string AdaptiveStep = "сПеременнымШагомToolStripMenuItem";
+            }
+        
+
+
+
+        
+
+
+
+
+
+
+
+         // Интеграл
+    
+    
+         // Подинтегральная функция
+         double integralF(double x)
+         {
+            return 2 * Math.Log(x) + x + 1;
+         }
+
+         // Метод левых прямоугольников
+         double leftRectangleMethod(double a, double b, uint n)
             {
                 double h = (b - a) / n;
                 double res = 0;
@@ -38,8 +82,8 @@ namespace Computationalmathematics
                 return h * res;
             }
 
-            // Метод правых прямоугольников
-            double rightRectangleMethod(double a, double b, uint n)
+         // Метод правых прямоугольников
+         double rightRectangleMethod(double a, double b, uint n)
             {
                 double h = (b - a) / n;
                 double res = 0;
@@ -50,8 +94,8 @@ namespace Computationalmathematics
                 return h * res;
             }
 
-            // Метод трапеций
-            double trapezoidMethod(double a, double b, uint n)
+         // Метод трапеций
+         double trapezoidMethod(double a, double b, uint n)
             {
                 double h = (b - a) / n;
                 double sum = integralF(a) + integralF(b); // концы
@@ -62,8 +106,8 @@ namespace Computationalmathematics
                 return h / 2 * sum;
             }
 
-            // Метод парабол
-            double parabolaMethod(double a, double b, uint n)
+         // Метод парабол
+         double parabolaMethod(double a, double b, uint n)
             {
                 if (n % 2 != 0)
                     throw new ArgumentException("Для метода парабол n должно быть чётным");
@@ -85,11 +129,10 @@ namespace Computationalmathematics
 
                 return sum * h / 3.0;
             }
-        }
+    
 
-        // Нелинейное уравнение
-        class NonLinearEqualation
-        {
+         // Нелинейное уравнение
+
             // f(x) = x^3 - 2x + sin(x) + 1
             double NonLinearF(double x)
             {
@@ -266,7 +309,7 @@ namespace Computationalmathematics
             }
 
 
-        }
+
 
 
 
@@ -368,11 +411,11 @@ namespace Computationalmathematics
         private void calculateIntegral(double a, double b, uint n)
         {
             // Начинаем считать
-            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
+            if (численныйМетодToolStripMenuItem.DropDownItems.Find(MenuNames.LeftRectangles, false).Checked)
             {
                 answerLabel.Text = leftRectangleMethod(a, b, n).ToString();
             }
-            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
+            else if (MenuNames.RightRectangles.Checked)
             {
                 answerLabel.Text = rightRectangleMethod(a, b, n).ToString();
             }
@@ -468,7 +511,7 @@ namespace Computationalmathematics
         private void Form1_Load(object sender, EventArgs e)
         {
             ToolStripMenuItem1.Checked = true;
-            методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true;
+            LeftRectangles.Checked = true;
             алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
         }
 
@@ -487,14 +530,14 @@ namespace Computationalmathematics
             алгоритмToolStripMenuItem.DropDownItems.Clear();
 
             // Численные методы
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников левых частей", "методПрямоугольниковЛевыхЧастейToolStripMenuItem", true);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников правых частей", "методПрямоугольниковПравыхЧастейToolStripMenuItem");
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод трапеций", "методТрапецийToolStripMenuItem");
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод парабол", "методПараболToolStripMenuItem");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников левых частей", MenuNames.LeftRectangles, true);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников правых частей", MenuNames.RightRectangles);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод трапеций", MenuNames.Trapezoid);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод парабол", MenuNames.Parabola);
 
             // Алгоритмы
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "алгоритмСПостояннымШагомToolStripMenuItem", true);
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "сПеременнымШагомToolStripMenuItem");
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", MenuNames.FixedStep, true);
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", MenuNames.AdaptiveStep);
 
             answerLabel.Text = "";
             primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";

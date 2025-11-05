@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Leo\\projects\\Computationalmathematics\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|C:\\Leo\\projects\\Computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|c:\\leo\\projects\\computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|solutionrelative:computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|c:\\leo\\projects\\computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|C:\\Leo\\projects\\Computationalmathematics\\computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DD006477-ED03-43FA-9D27-9061257F8A28}|Computationalmathematics\\Computationalmathematics.csproj|solutionrelative:computationalmathematics\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "Computationalmathematics\\Form1.cs",
               "ToolTip": "C:\\Leo\\projects\\Computationalmathematics\\Computationalmathematics\\Form1.cs",
               "RelativeToolTip": "Computationalmathematics\\Form1.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAgwMwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAGsBAAAAAAAAAAAAAJ0BAABnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-01T09:36:15.973Z",
               "EditorCaption": ""
