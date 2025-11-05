@@ -403,6 +403,17 @@ namespace Computationalmathematics
             }
         }
 
+        private void allElementInvisible()
+        {
+            foreach (Control control in Controls)
+            {
+                if (!((control.Name == menuStrip1.Name) || (control.Name == primerLabel.Name) || (control.Name == answerLabel.Name) || 
+                    (control.Name == button1.Name) || control.Name == nameOftask_label.Name))
+                {
+                    control.Visible = false;
+                }
+            }
+        }
 
 
         // При загрузке формы
@@ -439,6 +450,11 @@ namespace Computationalmathematics
 
             answerLabel.Text = "";
             primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";
+
+            textA.Visible = true;
+            textB.Visible = true;
+            label1.Visible = true;
+            textBoxN.Visible = true;
         }
 
         private void SetupDifferentialEquationsMethods()
@@ -452,6 +468,14 @@ namespace Computationalmathematics
 
             primerLabel.Text = "y + 4(y²)'' + cos(x) - (3x)' = ";
             answerLabel.Text = "";
+
+            textBoxX0.Visible = true;
+            labelX0.Visible = true;
+            labelY0.Visible = true;
+            textBoxY0.Visible = true;
+            label_Interval.Visible = true;
+            textBox_IntervalA.Visible = true;
+            textBox_IntervalB.Visible = true;
         }
 
         private void SetupnotLinearEquationsMethods()
@@ -506,6 +530,9 @@ namespace Computationalmathematics
         // Переключение Типов задач
         private void ТипЗадачиToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            // Сделать все элементы формы невидимыми
+            allElementInvisible();
+
             // Сбросить Checked у всех пунктов
             foreach (ToolStripMenuItem item in типЗадачиToolStripMenuItem.DropDownItems)
                 item.Checked = false;
@@ -535,34 +562,6 @@ namespace Computationalmathematics
                 default:
                     MessageBox.Show("Неизвестный тип задачи");
                     break;
-            }
-
-
-
-
-
-            
-
-            if (ToolStripMenuItem1.Checked)
-            {
-                textB.Visible = true;
-                textA.Visible = true;
-            }
-            else
-            {
-                textB.Visible = false;
-                textA.Visible = false;
-            }
-
-            if (ToolStripMenuItem2.Checked)
-            {
-                label1.Visible = false;
-                textBoxN.Visible = false;
-            }
-            else
-            {
-                label1.Visible = true;
-                textBoxN.Visible = true;
             }
         }
 
