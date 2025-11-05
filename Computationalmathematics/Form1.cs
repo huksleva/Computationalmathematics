@@ -1,5 +1,4 @@
-﻿using Computationalmathematics.Computationalmathematics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,61 +18,6 @@ namespace Computationalmathematics
         }
 
 
-<<<<<<< HEAD
-
-        
-            public static class MenuNames
-            {
-                // Типы задач
-                //public const string NumericalIntegration = "ToolStripMenuItem1";
-                //public const string DifferentialEquations = "ToolStripMenuItem2";
-                //public const string NonLinearEquations = "ToolStripMenuItem3";
-                //public const string ElementaryFunctions = "ToolStripMenuItem4";
-
-                // Численные методы — интегрирование
-                public const string LeftRectangles = "методПрямоугольниковЛевыхЧастейToolStripMenuItem";
-                public const string RightRectangles = "методПрямоугольниковПравыхЧастейToolStripMenuItem";
-                public const string Trapezoid = "методТрапецийToolStripMenuItem";
-                public const string Parabola = "методПараболToolStripMenuItem";
-
-                // Численные методы — нелинейные уравнения
-                public const string Bisection = "bisection";
-                public const string Newton = "newton";
-                public const string Secant = "secant";
-                public const string SimpleIteration = "simpleIteration";
-
-                // Численные методы — диффуры
-                public const string Euler = "эйлерStripMenuItem";
-                public const string RungeKutta = "ркStripMenuItem";
-
-                // Алгоритмы
-                public const string FixedStep = "алгоритмСПостояннымШагомToolStripMenuItem";
-                public const string AdaptiveStep = "сПеременнымШагомToolStripMenuItem";
-            }
-        
-
-
-
-        
-
-
-
-
-
-
-
-         // Интеграл
-    
-    
-         // Подинтегральная функция
-         double integralF(double x)
-         {
-            return 2 * Math.Log(x) + x + 1;
-         }
-
-         // Метод левых прямоугольников
-         double leftRectangleMethod(double a, double b, uint n)
-=======
         public static class Integral
         {
             public static double integralF(double x)
@@ -81,7 +25,6 @@ namespace Computationalmathematics
                 return 2 * Math.Log(x) + x + 1;
             }
             public static double leftRectangleMethod(double a, double b, uint n)
->>>>>>> ab2cc3ebd3c7efb3b346543ede5ecbcc84b610e7
             {
                 double h = (b - a) / n;
                 double res = 0;
@@ -91,13 +34,7 @@ namespace Computationalmathematics
                 }
                 return h * res;
             }
-<<<<<<< HEAD
-
-         // Метод правых прямоугольников
-         double rightRectangleMethod(double a, double b, uint n)
-=======
             public static double rightRectangleMethod(double a, double b, uint n)
->>>>>>> ab2cc3ebd3c7efb3b346543ede5ecbcc84b610e7
             {
                 double h = (b - a) / n;
                 double res = 0;
@@ -107,13 +44,7 @@ namespace Computationalmathematics
                 }
                 return h * res;
             }
-<<<<<<< HEAD
-
-         // Метод трапеций
-         double trapezoidMethod(double a, double b, uint n)
-=======
             public static double trapezoidMethod(double a, double b, uint n)
->>>>>>> ab2cc3ebd3c7efb3b346543ede5ecbcc84b610e7
             {
                 double h = (b - a) / n;
                 double sum = integralF(a) + integralF(b); // концы
@@ -123,13 +54,7 @@ namespace Computationalmathematics
                 }
                 return h / 2 * sum;
             }
-<<<<<<< HEAD
-
-         // Метод парабол
-         double parabolaMethod(double a, double b, uint n)
-=======
             public static double parabolaMethod(double a, double b, uint n)
->>>>>>> ab2cc3ebd3c7efb3b346543ede5ecbcc84b610e7
             {
                 if (n % 2 != 0)
                     throw new ArgumentException("Для метода парабол n должно быть чётным");
@@ -151,14 +76,6 @@ namespace Computationalmathematics
 
                 return sum * h / 3.0;
             }
-<<<<<<< HEAD
-    
-
-         // Нелинейное уравнение
-
-            // f(x) = x^3 - 2x + sin(x) + 1
-            double NonLinearF(double x)
-=======
             public static double AdaptiveSimpsonRecursive(double a, double b, double eps, double fa, double fm, double fb)
             {
                 double m = (a + b) / 2;
@@ -206,7 +123,6 @@ namespace Computationalmathematics
                 return (Math.Pow(x, 3) + Math.Sin(x) + 1) / 2.0;
             }
             public static double NonLinearF(double x)
->>>>>>> ab2cc3ebd3c7efb3b346543ede5ecbcc84b610e7
             {
                 return Math.Pow(x, 3) - 2 * x + Math.Sin(x) + 1;
             }
@@ -367,75 +283,8 @@ namespace Computationalmathematics
                     MessageBox.Show($"Ошибка в вычислении: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Метод с переменным шагом
-
-        // Вспомогательная рекурсивная функция
-        // Передаём f(a), f(m), f(b), чтобы не вычислять их повторно
-        double AdaptiveSimpsonRecursive(
-            double a, double b, double eps,
-            double fa, double fm, double fb)
-=======
         }
         public static class ElementaryFun
->>>>>>> ab2cc3ebd3c7efb3b346543ede5ecbcc84b610e7
         {
 
         }
@@ -451,50 +300,6 @@ namespace Computationalmathematics
         // Вспомогательные функции
         private void calculateIntegral()
         {
-<<<<<<< HEAD
-            // Начинаем считать
-            if (численныйМетодToolStripMenuItem.DropDownItems.Find(MenuNames.LeftRectangles, false).Checked)
-            {
-                answerLabel.Text = leftRectangleMethod(a, b, n).ToString();
-            }
-            else if (MenuNames.RightRectangles.Checked)
-            {
-                answerLabel.Text = rightRectangleMethod(a, b, n).ToString();
-            }
-            else if (методТрапецийToolStripMenuItem.Checked == true)
-            {
-                answerLabel.Text = trapezoidMethod(a, b, n).ToString();
-            }
-            else if (методПараболToolStripMenuItem.Checked == true)
-            {
-                answerLabel.Text = parabolaMethod(a, b, n).ToString();
-            }
-            else
-            {
-                MessageBox.Show("ERROR METHOD!");
-            }
-        }
-
-
-
-        //private void calculateNotLinearEquation()
-        //{
-        //
-        //}
-        private void calculateDifferentialEquation()
-        {
-
-        }
-        private void calculateElementaryFunction()
-        {
-
-        }
-
-        // Нажатие на кнопку - вычисление примера
-        private void button1_Click(object sender, EventArgs e)
-        {   
-=======
->>>>>>> ab2cc3ebd3c7efb3b346543ede5ecbcc84b610e7
             // Проверка на то что a, b, n - числа
             if (double.TryParse(textB.Text, out double b))
             {
@@ -604,7 +409,7 @@ namespace Computationalmathematics
         private void Form1_Load(object sender, EventArgs e)
         {
             ToolStripMenuItem1.Checked = true;
-            LeftRectangles.Checked = true;
+            методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true;
             алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
         }
 
@@ -623,14 +428,14 @@ namespace Computationalmathematics
             алгоритмToolStripMenuItem.DropDownItems.Clear();
 
             // Численные методы
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников левых частей", MenuNames.LeftRectangles, true);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников правых частей", MenuNames.RightRectangles);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод трапеций", MenuNames.Trapezoid);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод парабол", MenuNames.Parabola);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников левых частей", "методПрямоугольниковЛевыхЧастейToolStripMenuItem", true);
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников правых частей", "методПрямоугольниковПравыхЧастейToolStripMenuItem");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод трапеций", "методТрапецийToolStripMenuItem");
+            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод парабол", "методПараболToolStripMenuItem");
 
             // Алгоритмы
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", MenuNames.FixedStep, true);
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", MenuNames.AdaptiveStep);
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "алгоритмСПостояннымШагомToolStripMenuItem", true);
+            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "сПеременнымШагомToolStripMenuItem");
 
             answerLabel.Text = "";
             primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";
