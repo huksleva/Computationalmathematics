@@ -727,5 +727,10 @@ namespace Computationalmathematics
         {
 
         }
+
+        private void primerLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
