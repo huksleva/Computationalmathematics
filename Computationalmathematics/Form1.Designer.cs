@@ -58,6 +58,9 @@
             this.label_Interval = new System.Windows.Forms.Label();
             this.textBox_IntervalA = new System.Windows.Forms.TextBox();
             this.textBox_IntervalB = new System.Windows.Forms.TextBox();
+            this.методЭйлераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сФиксированнымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.методРунгеКуттыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,8 +73,8 @@
             this.алгоритмToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(738, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -84,7 +87,7 @@
             this.ToolStripMenuItem3,
             this.ToolStripMenuItem4});
             this.типЗадачиToolStripMenuItem.Name = "типЗадачиToolStripMenuItem";
-            this.типЗадачиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.типЗадачиToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
             this.типЗадачиToolStripMenuItem.Text = "Тип задачи";
             this.типЗадачиToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ТипЗадачиToolStripMenuItem_DropDownItemClicked);
             this.типЗадачиToolStripMenuItem.Click += new System.EventHandler(this.численноеИнтегрированиеToolStripMenuItem_Click);
@@ -92,27 +95,27 @@
             // ToolStripMenuItem1
             // 
             this.ToolStripMenuItem1.Name = "ToolStripMenuItem1";
-            this.ToolStripMenuItem1.Size = new System.Drawing.Size(249, 22);
+            this.ToolStripMenuItem1.Size = new System.Drawing.Size(314, 26);
             this.ToolStripMenuItem1.Text = "Численное интегрирование";
             this.ToolStripMenuItem1.Click += new System.EventHandler(this.численноеИнтегрированиеToolStripMenuItem1_Click);
             // 
             // ToolStripMenuItem2
             // 
             this.ToolStripMenuItem2.Name = "ToolStripMenuItem2";
-            this.ToolStripMenuItem2.Size = new System.Drawing.Size(249, 22);
+            this.ToolStripMenuItem2.Size = new System.Drawing.Size(314, 26);
             this.ToolStripMenuItem2.Text = "Дифференциальные уравнения";
             // 
             // ToolStripMenuItem3
             // 
             this.ToolStripMenuItem3.Name = "ToolStripMenuItem3";
-            this.ToolStripMenuItem3.Size = new System.Drawing.Size(249, 22);
+            this.ToolStripMenuItem3.Size = new System.Drawing.Size(314, 26);
             this.ToolStripMenuItem3.Text = "Нелинейные уравнения";
             this.ToolStripMenuItem3.Click += new System.EventHandler(this.нелинейныеФункцииToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem4
             // 
             this.ToolStripMenuItem4.Name = "ToolStripMenuItem4";
-            this.ToolStripMenuItem4.Size = new System.Drawing.Size(249, 22);
+            this.ToolStripMenuItem4.Size = new System.Drawing.Size(314, 26);
             this.ToolStripMenuItem4.Text = "Элементарные функции";
             // 
             // численныйМетодToolStripMenuItem
@@ -121,67 +124,69 @@
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem,
             this.методПрямоугольниковПравыхЧастейToolStripMenuItem,
             this.методТрапецийToolStripMenuItem,
-            this.методПараболToolStripMenuItem});
+            this.методПараболToolStripMenuItem,
+            this.методЭйлераToolStripMenuItem,
+            this.методРунгеКуттыToolStripMenuItem});
             this.численныйМетодToolStripMenuItem.Name = "численныйМетодToolStripMenuItem";
-            this.численныйМетодToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.численныйМетодToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.численныйМетодToolStripMenuItem.Text = "Численный метод";
             this.численныйМетодToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ЧисленныйМетодToolStripMenuItem_DropDownItemClicked);
             // 
             // методПрямоугольниковЛевыхЧастейToolStripMenuItem
             // 
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Name = "методПрямоугольниковЛевыхЧастейToolStripMenuItem";
-            this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Text = "Метод прямоугольников левых частей";
             this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Click += new System.EventHandler(this.методПрямоугольниковЛевыхЧастейToolStripMenuItem_Click);
             // 
             // методПрямоугольниковПравыхЧастейToolStripMenuItem
             // 
             this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Name = "методПрямоугольниковПравыхЧастейToolStripMenuItem";
-            this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
             this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Text = "Метод прямоугольников правых частей";
             // 
             // методТрапецийToolStripMenuItem
             // 
             this.методТрапецийToolStripMenuItem.Name = "методТрапецийToolStripMenuItem";
-            this.методТрапецийToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.методТрапецийToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
             this.методТрапецийToolStripMenuItem.Text = "Метод трапеций";
             // 
             // методПараболToolStripMenuItem
             // 
             this.методПараболToolStripMenuItem.Name = "методПараболToolStripMenuItem";
-            this.методПараболToolStripMenuItem.Size = new System.Drawing.Size(296, 22);
+            this.методПараболToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
             this.методПараболToolStripMenuItem.Text = "Метод парабол";
             // 
             // алгоритмToolStripMenuItem
             // 
             this.алгоритмToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.алгоритмСПостояннымШагомToolStripMenuItem,
-            this.сПеременнымШагомToolStripMenuItem});
+            this.сПеременнымШагомToolStripMenuItem,
+            this.сФиксированнымШагомToolStripMenuItem});
             this.алгоритмToolStripMenuItem.Name = "алгоритмToolStripMenuItem";
-            this.алгоритмToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.алгоритмToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
             this.алгоритмToolStripMenuItem.Text = "Алгоритм";
             this.алгоритмToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.АлгоритмToolStripMenuItem_DropDownItemClicked);
             // 
             // алгоритмСПостояннымШагомToolStripMenuItem
             // 
             this.алгоритмСПостояннымШагомToolStripMenuItem.Name = "алгоритмСПостояннымШагомToolStripMenuItem";
-            this.алгоритмСПостояннымШагомToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.алгоритмСПостояннымШагомToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
             this.алгоритмСПостояннымШагомToolStripMenuItem.Text = "С постоянным шагом";
             // 
             // сПеременнымШагомToolStripMenuItem
             // 
             this.сПеременнымШагомToolStripMenuItem.Name = "сПеременнымШагомToolStripMenuItem";
-            this.сПеременнымШагомToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.сПеременнымШагомToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
             this.сПеременнымШагомToolStripMenuItem.Text = "С переменным шагом";
             // 
             // nameOftask_label
             // 
             this.nameOftask_label.AutoSize = true;
             this.nameOftask_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameOftask_label.Location = new System.Drawing.Point(279, 40);
-            this.nameOftask_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.nameOftask_label.Location = new System.Drawing.Point(372, 49);
             this.nameOftask_label.Name = "nameOftask_label";
-            this.nameOftask_label.Size = new System.Drawing.Size(216, 17);
+            this.nameOftask_label.Size = new System.Drawing.Size(268, 20);
             this.nameOftask_label.TabIndex = 4;
             this.nameOftask_label.Text = "Численное интегрирование";
             this.nameOftask_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -191,36 +196,40 @@
             // 
             this.primerLabel.AutoSize = true;
             this.primerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.primerLabel.Location = new System.Drawing.Point(12, 111);
+            this.primerLabel.Location = new System.Drawing.Point(16, 137);
+            this.primerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.primerLabel.Name = "primerLabel";
-            this.primerLabel.Size = new System.Drawing.Size(567, 63);
+            this.primerLabel.Size = new System.Drawing.Size(695, 76);
             this.primerLabel.TabIndex = 5;
             this.primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";
             // 
             // textB
             // 
             this.textB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textB.Location = new System.Drawing.Point(12, 97);
+            this.textB.Location = new System.Drawing.Point(16, 119);
+            this.textB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textB.Name = "textB";
-            this.textB.Size = new System.Drawing.Size(30, 23);
+            this.textB.Size = new System.Drawing.Size(39, 26);
             this.textB.TabIndex = 6;
             this.textB.Text = "5";
             // 
             // textA
             // 
             this.textA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textA.Location = new System.Drawing.Point(12, 177);
+            this.textA.Location = new System.Drawing.Point(16, 218);
+            this.textA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textA.Name = "textA";
-            this.textA.Size = new System.Drawing.Size(30, 23);
+            this.textA.Size = new System.Drawing.Size(39, 26);
             this.textA.TabIndex = 7;
             this.textA.Text = "1";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(396, 255);
+            this.button1.Location = new System.Drawing.Point(528, 314);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 28);
+            this.button1.Size = new System.Drawing.Size(207, 34);
             this.button1.TabIndex = 8;
             this.button1.Text = "Вычислить";
             this.button1.UseVisualStyleBackColor = true;
@@ -229,9 +238,10 @@
             // textBoxN
             // 
             this.textBoxN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxN.Location = new System.Drawing.Point(200, 255);
+            this.textBoxN.Location = new System.Drawing.Point(267, 314);
+            this.textBoxN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxN.Name = "textBoxN";
-            this.textBoxN.Size = new System.Drawing.Size(81, 23);
+            this.textBoxN.Size = new System.Drawing.Size(107, 26);
             this.textBoxN.TabIndex = 9;
             this.textBoxN.Text = "100";
             this.textBoxN.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
@@ -240,9 +250,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 258);
+            this.label1.Location = new System.Drawing.Point(16, 318);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 17);
+            this.label1.Size = new System.Drawing.Size(221, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "n (кол-во разбиений) =";
             // 
@@ -250,17 +261,19 @@
             // 
             this.answerLabel.AutoSize = true;
             this.answerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.answerLabel.Location = new System.Drawing.Point(560, 111);
+            this.answerLabel.Location = new System.Drawing.Point(747, 137);
+            this.answerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.answerLabel.Name = "answerLabel";
-            this.answerLabel.Size = new System.Drawing.Size(0, 63);
+            this.answerLabel.Size = new System.Drawing.Size(0, 76);
             this.answerLabel.TabIndex = 11;
             // 
             // labelX0
             // 
             this.labelX0.AutoSize = true;
-            this.labelX0.Location = new System.Drawing.Point(0, 289);
+            this.labelX0.Location = new System.Drawing.Point(0, 356);
+            this.labelX0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelX0.Name = "labelX0";
-            this.labelX0.Size = new System.Drawing.Size(29, 13);
+            this.labelX0.Size = new System.Drawing.Size(33, 16);
             this.labelX0.TabIndex = 12;
             this.labelX0.Text = "Xo =";
             this.labelX0.Click += new System.EventHandler(this.label2_Click);
@@ -268,55 +281,79 @@
             // labelY0
             // 
             this.labelY0.AutoSize = true;
-            this.labelY0.Location = new System.Drawing.Point(0, 312);
+            this.labelY0.Location = new System.Drawing.Point(0, 384);
+            this.labelY0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelY0.Name = "labelY0";
-            this.labelY0.Size = new System.Drawing.Size(29, 13);
+            this.labelY0.Size = new System.Drawing.Size(34, 16);
             this.labelY0.TabIndex = 13;
             this.labelY0.Text = "Yo =";
             // 
             // textBoxX0
             // 
-            this.textBoxX0.Location = new System.Drawing.Point(35, 286);
+            this.textBoxX0.Location = new System.Drawing.Point(47, 352);
+            this.textBoxX0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxX0.Name = "textBoxX0";
-            this.textBoxX0.Size = new System.Drawing.Size(85, 20);
+            this.textBoxX0.Size = new System.Drawing.Size(112, 22);
             this.textBoxX0.TabIndex = 14;
             // 
             // textBoxY0
             // 
-            this.textBoxY0.Location = new System.Drawing.Point(35, 312);
+            this.textBoxY0.Location = new System.Drawing.Point(47, 384);
+            this.textBoxY0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxY0.Name = "textBoxY0";
-            this.textBoxY0.Size = new System.Drawing.Size(85, 20);
+            this.textBoxY0.Size = new System.Drawing.Size(112, 22);
             this.textBoxY0.TabIndex = 15;
             // 
             // label_Interval
             // 
             this.label_Interval.AutoSize = true;
-            this.label_Interval.Location = new System.Drawing.Point(0, 345);
+            this.label_Interval.Location = new System.Drawing.Point(0, 425);
+            this.label_Interval.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Interval.Name = "label_Interval";
-            this.label_Interval.Size = new System.Drawing.Size(217, 13);
+            this.label_Interval.Size = new System.Drawing.Size(247, 16);
             this.label_Interval.TabIndex = 16;
             this.label_Interval.Text = "На интервале от                                      до";
             // 
             // textBox_IntervalA
             // 
-            this.textBox_IntervalA.Location = new System.Drawing.Point(93, 342);
+            this.textBox_IntervalA.Location = new System.Drawing.Point(124, 421);
+            this.textBox_IntervalA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_IntervalA.Name = "textBox_IntervalA";
-            this.textBox_IntervalA.Size = new System.Drawing.Size(101, 20);
+            this.textBox_IntervalA.Size = new System.Drawing.Size(133, 22);
             this.textBox_IntervalA.TabIndex = 17;
             // 
             // textBox_IntervalB
             // 
-            this.textBox_IntervalB.Location = new System.Drawing.Point(223, 342);
+            this.textBox_IntervalB.Location = new System.Drawing.Point(297, 421);
+            this.textBox_IntervalB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_IntervalB.Name = "textBox_IntervalB";
-            this.textBox_IntervalB.Size = new System.Drawing.Size(101, 20);
+            this.textBox_IntervalB.Size = new System.Drawing.Size(133, 22);
             this.textBox_IntervalB.TabIndex = 18;
+            // 
+            // методЭйлераToolStripMenuItem
+            // 
+            this.методЭйлераToolStripMenuItem.Name = "методЭйлераToolStripMenuItem";
+            this.методЭйлераToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+            this.методЭйлераToolStripMenuItem.Text = "Метод Эйлера";
+            // 
+            // сФиксированнымШагомToolStripMenuItem
+            // 
+            this.сФиксированнымШагомToolStripMenuItem.Name = "сФиксированнымШагомToolStripMenuItem";
+            this.сФиксированнымШагомToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
+            this.сФиксированнымШагомToolStripMenuItem.Text = "С фиксированным шагом";
+            // 
+            // методРунгеКуттыToolStripMenuItem
+            // 
+            this.методРунгеКуттыToolStripMenuItem.Name = "методРунгеКуттыToolStripMenuItem";
+            this.методРунгеКуттыToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+            this.методРунгеКуттыToolStripMenuItem.Text = "Метод Рунге-Кутты";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(738, 371);
+            this.ClientSize = new System.Drawing.Size(984, 457);
             this.Controls.Add(this.textBox_IntervalB);
             this.Controls.Add(this.textBox_IntervalA);
             this.Controls.Add(this.label_Interval);
@@ -335,7 +372,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Я";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -376,6 +413,9 @@
         private System.Windows.Forms.Label label_Interval;
         private System.Windows.Forms.TextBox textBox_IntervalA;
         private System.Windows.Forms.TextBox textBox_IntervalB;
+        private System.Windows.Forms.ToolStripMenuItem методЭйлераToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сФиксированнымШагомToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem методРунгеКуттыToolStripMenuItem;
     }
 }
 

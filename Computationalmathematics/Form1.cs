@@ -114,7 +114,20 @@ namespace Computationalmathematics
         }
         public static class DiffEqualation
         {
+            public static double EilerMethod(double x0, double y0, double a, double b, uint n)
+            {
+                double res = 0;
 
+
+                return res;
+            }
+            public static double RungeKuttaMethod(double x0, double y0, double a, double b, uint n)
+            {
+                double res = 0;
+
+
+                return res;
+            }
         }
         public static class NonLinearEqualation
         {
@@ -292,66 +305,93 @@ namespace Computationalmathematics
 
 
 
-
-
-
-
-
-        // Вспомогательные функции
-        private void calculateIntegral()
+        // Проверка на целое число
+        public static uint CheckOnUIntNumber(string input)
         {
-            // Проверка на то что a, b, n - числа
-            if (double.TryParse(textB.Text, out double b))
+            if (uint.TryParse(input, out uint num))
             {
-                if (double.TryParse(textA.Text, out double a))
-                {
-                    // Используем алгоритм с постоянным шагом
-                    if (textBoxN.Visible && label1.Visible)
-                    {
-                        if (uint.TryParse(textBoxN.Text, out uint n))
-                        {
-                            // Начинаем считать
-                            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked == true)
-                            {
-                                answerLabel.Text = Integral.leftRectangleMethod(a, b, n).ToString();
-                            }
-                            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked == true)
-                            {
-                                answerLabel.Text = Integral.rightRectangleMethod(a, b, n).ToString();
-                            }
-                            else if (методТрапецийToolStripMenuItem.Checked == true)
-                            {
-                                answerLabel.Text = Integral.trapezoidMethod(a, b, n).ToString();
-                            }
-                            else if (методПараболToolStripMenuItem.Checked == true)
-                            {
-                                answerLabel.Text = Integral.parabolaMethod(a, b, n).ToString();
-                            }
-                            else
-                            {
-                                MessageBox.Show("ERROR METHOD!");
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Кол-во разбиений (n) должно быть целым положительным числом, проверь!");
-                        }
-                    }
-                    // Используем алгоритм с постоянным шагом
-                    else
-                    {
-                        answerLabel.Text = Integral.AdaptiveSimpson(a, b, 0.000001).ToString();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Правая граница (b) должна быть числом, проверь!");
-                }
+                return num;
             }
             else
             {
-                MessageBox.Show("Левая граница (a) должна быть числом, проверь!");
+                MessageBox.Show(input + " - это не целое неотрицательное число");
+                throw new ArgumentException();
             }
+        }
+        // Проверка на число, оно может быть и дробным и отрицательным
+        public static double CheckOnNumber(string input)
+        {
+            if (double.TryParse(input, out double num))
+            {
+                return num;
+            }
+            else
+            {
+                MessageBox.Show(input + " - это не число");
+                throw new ArgumentException();
+            }
+        }
+
+
+
+
+        // Невидимость элементов и пунктов меню
+        private void allMetodsInvisible()
+        {
+            foreach (ToolStripItem subitem in численныйМетодToolStripMenuItem.DropDownItems)
+            {
+                subitem.Visible = false;
+            }
+        }
+        private void allAlgoritmsInvisible()
+        {
+            foreach (ToolStripItem subitem in алгоритмToolStripMenuItem.DropDownItems)
+            {
+                subitem.Visible = false;
+            }
+        }
+        private void allElementInvisible()
+        {
+            foreach (Control control in Controls)
+            {
+                if (!((control == menuStrip1) || (control == primerLabel) || (control == answerLabel) || (control == button1) || control == nameOftask_label))
+                {
+                    control.Visible = false;
+                }
+            }
+        }
+
+
+
+        private void calculateIntegral()
+        {
+            double a = CheckOnNumber(textA.Text);
+            double b = CheckOnNumber(textB.Text);
+            uint n = CheckOnUIntNumber(textBoxN.Text);
+
+            
+            // Начинаем считать
+            if (методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked)
+            {
+                answerLabel.Text = Integral.leftRectangleMethod(a, b, n).ToString();
+            }
+            else if (методПрямоугольниковПравыхЧастейToolStripMenuItem.Checked)
+            {
+                answerLabel.Text = Integral.rightRectangleMethod(a, b, n).ToString();
+            }
+            else if (методТрапецийToolStripMenuItem.Checked)
+            {
+                answerLabel.Text = Integral.trapezoidMethod(a, b, n).ToString();
+            }
+            else if (методПараболToolStripMenuItem.Checked)
+            {
+                answerLabel.Text = Integral.parabolaMethod(a, b, n).ToString();
+            }
+            else
+            {
+                MessageBox.Show("ERROR METHOD!");
+            }
+                        
 
 
 
@@ -364,7 +404,19 @@ namespace Computationalmathematics
         }
         private void calculateDifferentialEquation()
         {
+            double x0 = CheckOnNumber(textBoxX0.Text);
+            double y0 = CheckOnNumber(textBoxY0.Text);
+            double a = CheckOnNumber(textBox_IntervalA.Text);
+            double b = CheckOnNumber(textBox_IntervalB.Text);
 
+            if (методЭйлераToolStripMenuItem.Checked)
+            {
+
+            }
+            else if (методРунгеКуттыToolStripMenuItem.Checked)
+            {
+
+            }
         }
         private void calculateNonLinearEqualation()
         {
@@ -381,19 +433,19 @@ namespace Computationalmathematics
         // Нажатие на кнопку - вычисление примера
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ToolStripMenuItem1.Checked == true)
+            if (ToolStripMenuItem1.Checked)
             {
                 calculateIntegral();
             }
-            else if (ToolStripMenuItem2.Checked == true)
+            else if (ToolStripMenuItem2.Checked)
             {
                 calculateDifferentialEquation();
             }
-            else if (ToolStripMenuItem3.Checked == true)
+            else if (ToolStripMenuItem3.Checked)
             {
                 calculateNonLinearEqualation();
             }
-            else if (ToolStripMenuItem4.Checked == true)
+            else if (ToolStripMenuItem4.Checked)
             {
                 calculateElementaryFunctions();
             }
@@ -403,50 +455,37 @@ namespace Computationalmathematics
             }
         }
 
-        private void allElementInvisible()
-        {
-            foreach (Control control in Controls)
-            {
-                if (!((control.Name == menuStrip1.Name) || (control.Name == primerLabel.Name) || (control.Name == answerLabel.Name) || 
-                    (control.Name == button1.Name) || control.Name == nameOftask_label.Name))
-                {
-                    control.Visible = false;
-                }
-            }
-        }
-
+        
 
         // При загрузке формы
         private void Form1_Load(object sender, EventArgs e)
         {
+            allElementInvisible();
+            allMetodsInvisible();
+            allAlgoritmsInvisible();
+            SetupNumericalIntegrationMethods();
+
             ToolStripMenuItem1.Checked = true;
             методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true;
             алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
         }
 
-        // Вспомогательный метод для добавления пункта с Checked
-        private ToolStripMenuItem AddCheckableItem(ToolStripItemCollection items, string text, string name, bool isChecked = false)
-        {
-            var item = new ToolStripMenuItem(text) { Name = name, Checked = isChecked };
-            items.Add(item);
-            return item;
-        }
-
+        
         // Вспомогательные методы
         private void SetupNumericalIntegrationMethods()
         {
-            численныйМетодToolStripMenuItem.DropDownItems.Clear();
-            алгоритмToolStripMenuItem.DropDownItems.Clear();
-
             // Численные методы
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников левых частей", "методПрямоугольниковЛевыхЧастейToolStripMenuItem", true);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод прямоугольников правых частей", "методПрямоугольниковПравыхЧастейToolStripMenuItem");
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод трапеций", "методТрапецийToolStripMenuItem");
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод парабол", "методПараболToolStripMenuItem");
+            методПрямоугольниковЛевыхЧастейToolStripMenuItem.Visible = true;
+            методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true; // checked=true
+            методПрямоугольниковПравыхЧастейToolStripMenuItem.Visible = true;
+            методПараболToolStripMenuItem.Visible = true;
+            методТрапецийToolStripMenuItem.Visible = true;
+
 
             // Алгоритмы
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "алгоритмСПостояннымШагомToolStripMenuItem", true);
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "сПеременнымШагомToolStripMenuItem");
+            алгоритмСПостояннымШагомToolStripMenuItem.Visible = true;
+            алгоритмСПостояннымШагомToolStripMenuItem.Checked = true; // checked=true
+            сПеременнымШагомToolStripMenuItem.Visible = true;
 
             answerLabel.Text = "";
             primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";
@@ -456,17 +495,16 @@ namespace Computationalmathematics
             label1.Visible = true;
             textBoxN.Visible = true;
         }
-
         private void SetupDifferentialEquationsMethods()
         {
-            численныйМетодToolStripMenuItem.DropDownItems.Clear();
-            алгоритмToolStripMenuItem.DropDownItems.Clear();
+            методЭйлераToolStripMenuItem.Visible = true;
+            методЭйлераToolStripMenuItem.Checked = true; // checked=true
+            методРунгеКуттыToolStripMenuItem.Visible = true;
 
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Эйлера", "эйлер", true);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Рунге-Кутта", "рк");
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "С фиксированным шагом", "фиксированныйШаг", true);
+            сФиксированнымШагомToolStripMenuItem.Visible = true;
+            сФиксированнымШагомToolStripMenuItem.Checked = true; // checked=true
 
-            primerLabel.Text = "y + 4(y²)'' + cos(x) - (3x)' = ";
+            primerLabel.Text = "y + 4y'' + cos(x) - 3x' = 0";
             answerLabel.Text = "";
 
             textBoxX0.Visible = true;
@@ -476,31 +514,31 @@ namespace Computationalmathematics
             label_Interval.Visible = true;
             textBox_IntervalA.Visible = true;
             textBox_IntervalB.Visible = true;
+            label1.Visible = true;
+            textBoxN.Visible = true;
         }
-
         private void SetupnotLinearEquationsMethods()
         {
             численныйМетодToolStripMenuItem.DropDownItems.Clear();
             алгоритмToolStripMenuItem.DropDownItems.Clear();
 
             // Численные методы для нелинейных уравнений
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод половинного деления", "bisection", true);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Ньютона (касательных)", "newton");
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод хорд", "secant");
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод простой итерации", "simpleIteration");
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод половинного деления", "bisection", true);
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Ньютона (касательных)", "newton");
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод хорд", "secant");
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод простой итерации", "simpleIteration");
 
             // Для нелинейных уравнений обычно используется постоянный или адаптивный контроль сходимости,
             // но шаг N может не требоваться — поэтому скроем поле ввода N
             // (видимость будет управляться в обработчике клика по алгоритму)
 
             // Алгоритмы (можно оставить те же, или упростить)
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
+            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
+            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
 
             primerLabel.Text = "f(x) = e^x + x^3 - ln(x)";
             answerLabel.Text = "";
         }
-
         private void SetupelementaryFunctionsMethod()
         {
             численныйМетодToolStripMenuItem.DropDownItems.Clear();
@@ -510,20 +548,21 @@ namespace Computationalmathematics
             алгоритмToolStripMenuItem.DropDownItems.Clear();
 
             // Методы для работы с элементарными функциями
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Разложение в ряд Тейлора", "taylor", true);
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное дифференцирование", "differentiation");
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное интегрирование", "integration"); // если нужно
-            AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Вычисление функции напрямую", "direct");
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Разложение в ряд Тейлора", "taylor", true);
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное дифференцирование", "differentiation");
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное интегрирование", "integration"); // если нужно
+            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Вычисление функции напрямую", "direct");
 
             // Алгоритмы — обычно требуется указать количество членов ряда или шаг
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
-            AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
+            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
+            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
 
             primerLabel.Text = "e^x + x^2 - ln(x) + x = ";
             answerLabel.Text = "";
         }
 
 
+        
 
 
 
@@ -532,6 +571,9 @@ namespace Computationalmathematics
         {
             // Сделать все элементы формы невидимыми
             allElementInvisible();
+            // Сделать все пункты меню методов и алгоритмов невидимыми
+            allMetodsInvisible();
+            allAlgoritmsInvisible();
 
             // Сбросить Checked у всех пунктов
             foreach (ToolStripMenuItem item in типЗадачиToolStripMenuItem.DropDownItems)
