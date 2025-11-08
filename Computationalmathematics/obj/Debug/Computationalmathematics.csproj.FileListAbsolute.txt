@@ -27,3 +27,4 @@ C:\Leo\projects\Computationalmathematics\Computationalmathematics\bin\Debug\Comp
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.application
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe.manifest
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.application
+C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.Form2.resources

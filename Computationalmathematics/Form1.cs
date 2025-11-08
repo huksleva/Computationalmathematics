@@ -17,6 +17,7 @@ namespace Computationalmathematics
             InitializeComponent();
         }
 
+        private Form2 form2;
 
         public static class Integral
         {
@@ -26,6 +27,11 @@ namespace Computationalmathematics
             }
             public static double leftRectangleMethod(double a, double b, uint n)
             {
+                if (n == 0)
+                {
+                    MessageBox.Show("ERROR, на 0 делить нельзя");
+                    return 0;
+                }
                 double h = (b - a) / n;
                 double res = 0;
                 for (uint i = 0; i < n; i++)
@@ -36,6 +42,11 @@ namespace Computationalmathematics
             }
             public static double rightRectangleMethod(double a, double b, uint n)
             {
+                if (n == 0)
+                {
+                    MessageBox.Show("ERROR, на 0 делить нельзя");
+                    return 0;
+                }
                 double h = (b - a) / n;
                 double res = 0;
                 for (uint i = 1; i <= n; i++)
@@ -46,6 +57,11 @@ namespace Computationalmathematics
             }
             public static double trapezoidMethod(double a, double b, uint n)
             {
+                if (n == 0)
+                {
+                    MessageBox.Show("ERROR, на 0 делить нельзя");
+                    return 0;
+                }
                 double h = (b - a) / n;
                 double sum = integralF(a) + integralF(b); // концы
                 for (uint i = 1; i < n; i++)
@@ -56,8 +72,17 @@ namespace Computationalmathematics
             }
             public static double parabolaMethod(double a, double b, uint n)
             {
-                if (n % 2 != 0)
-                    throw new ArgumentException("Для метода парабол n должно быть чётным");
+                if (n == 0)
+                {
+                    MessageBox.Show("ERROR, на 0 делить нельзя");
+                    return 0;
+                }
+                else if (n % 2 != 0)
+                {
+                    MessageBox.Show("Для метода парабол n должно быть чётным");
+                    return 0;
+                }
+                    
 
                 double h = (b - a) / n;
                 double sum = integralF(a) + integralF(b); // x0 и xn
@@ -114,18 +139,57 @@ namespace Computationalmathematics
         }
         public static class DiffEqualation
         {
-            public static double EilerMethod(double x0, double y0, double a, double b, uint n)
+            public static double f(double x, double y)
             {
-                double res = 0;
+                return Math.Pow(x, 2) + 4 * x + y;   //dy/dx = x² + 4x + y
+            }
+            public static double[,] EilerMethod(double x0, double y0, double a, double b, uint n)
+            {
+                if (n == 0)
+                {
+                    MessageBox.Show("ERROR, на 0 делить нельзя");
+                    return null;
+                }
+                double h = (b - a) / n; // шаг
+                double[,] res = new double[n+1, 2];
 
+                
+                double x = x0, y = y0;
+                for (int i = 0; i < n; i++)
+                {
+                    res[i, 0] = x;
+                    res[i, 1] = y;
+
+                    y = y + h * f(x, y);
+                    x = x + h;
+                }
+                res[n, 0] = x;
+                res[n, 1] = y;
 
                 return res;
             }
-            public static double RungeKuttaMethod(double x0, double y0, double a, double b, uint n)
+            public static double[,] RungeKuttaMethod(double x0, double y0, double a, double b, uint n)
             {
-                double res = 0;
+                if (n == 0)
+                {
+                    MessageBox.Show("ERROR, на 0 делить нельзя");
+                    return null;
+                }
+                double h = (b - a) / n;
+                double[,] res = new double[n, 2];
 
 
+
+
+
+
+
+
+
+
+
+
+                // Возвращет матрицу из двух строк: X и Y
                 return res;
             }
         }
@@ -315,7 +379,8 @@ namespace Computationalmathematics
             else
             {
                 MessageBox.Show(input + " - это не целое неотрицательное число");
-                throw new ArgumentException();
+                return 0;
+                throw new ArgumentException("ERROR");
             }
         }
         // Проверка на число, оно может быть и дробным и отрицательным
@@ -328,7 +393,8 @@ namespace Computationalmathematics
             else
             {
                 MessageBox.Show(input + " - это не число");
-                throw new ArgumentException();
+                return 0.0;
+                throw new ArgumentException("ERROR");
             }
         }
 
@@ -408,15 +474,39 @@ namespace Computationalmathematics
             double y0 = CheckOnNumber(textBoxY0.Text);
             double a = CheckOnNumber(textBox_IntervalA.Text);
             double b = CheckOnNumber(textBox_IntervalB.Text);
+            uint n = CheckOnUIntNumber(textBoxN.Text);
+            double[,] res = new double[n,2];
 
             if (методЭйлераToolStripMenuItem.Checked)
             {
-
+                res = DiffEqualation.EilerMethod(x0, y0, a, b, n);
             }
             else if (методРунгеКуттыToolStripMenuItem.Checked)
             {
-
+                res = DiffEqualation.RungeKuttaMethod(x0, y0, a, b, n);
             }
+            else
+            {
+                MessageBox.Show("ERROR, нет такого метода");
+                res = null;
+            }
+
+
+
+            // Если окно ещё не создано ИЛИ уже закрыто (и удалено)
+            if (form2 == null || form2.IsDisposed)
+            {
+                form2 = new Form2(res);
+                form2.FormClosed += (s, args) => form2 = null; // автоматически обнуляем при закрытии
+                form2.Show();
+            }
+            else
+            {
+                // Окно уже открыто → просто обновляем данные
+                form2.UpdateData(DiffEqualation.EilerMethod(x0, y0, a, b, n)); // ← нужно реализовать этот метод в Form2
+                form2.BringToFront();      // поднимаем окно поверх других
+            }
+
         }
         private void calculateNonLinearEqualation()
         {
@@ -504,7 +594,7 @@ namespace Computationalmathematics
             сФиксированнымШагомToolStripMenuItem.Visible = true;
             сФиксированнымШагомToolStripMenuItem.Checked = true; // checked=true
 
-            primerLabel.Text = "y + 4y'' + cos(x) - 3x' = 0";
+            primerLabel.Text = "dy/dx = x² + 4x + y";
             answerLabel.Text = "";
 
             textBoxX0.Visible = true;
@@ -729,6 +819,11 @@ namespace Computationalmathematics
         }
 
         private void primerLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableForDIFF_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
