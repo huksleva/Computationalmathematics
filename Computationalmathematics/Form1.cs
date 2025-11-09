@@ -143,6 +143,24 @@ namespace Computationalmathematics
             {
                 return Math.Pow(x, 2) + 4 * x + y;   //dy/dx = x² + 4x + y
             }
+            public static uint factorial(uint x)
+            {
+                uint res = 1;
+                for (uint i = 1; i <= x; i++)
+                {
+                    res *= i;
+                }
+                return res;
+            }
+            public static uint C(uint n, uint k)
+            {
+                if (k > n)
+                {
+                    MessageBox.Show("ERROR, k > n");
+                    return 0;
+                }
+                return factorial(n) / (factorial(k) * factorial(n - k));
+            }
             public static double[,] EilerMethod(double x0, double y0, double a, double b, uint n)
             {
                 if (n == 0)
@@ -166,6 +184,8 @@ namespace Computationalmathematics
                 res[n, 0] = x;
                 res[n, 1] = y;
 
+
+                // Возвращет матрицу из двух строк: X и Y
                 return res;
             }
             public static double[,] RungeKuttaMethod(double x0, double y0, double a, double b, uint n)
@@ -176,17 +196,64 @@ namespace Computationalmathematics
                     return null;
                 }
                 double h = (b - a) / n;
-                double[,] res = new double[n, 2];
+                double[,] res = new double[n+1, 2];
 
 
+                double x = x0, y = y0;
+                for (int i = 0; i < n; i++)
+                {
+                    res[i, 0] = x;
+                    res[i, 1] = y;
+
+                    // Вычисление коэффициентов K1–K4
+                    double k1 = h * f(x, y);
+                    double k2 = h * f(x + (h / 2), y + (k1 / 2));
+                    double k3 = h * f(x + (h / 2), y + (k2 / 2));
+                    double k4 = h * f(x + h, y + k3);
+                    double F = (k1 + (2 * k2) + (2 * k3) + k4) / 6;
+
+                    y = y + F;
+                    x = x + h;
+                }
+                res[n, 0] = x;
+                res[n, 1] = y;
 
 
+                // Возвращет матрицу из двух строк: X и Y
+                return res;
+            }
+            public static double[,] RungeKuttaMethod2(double x0, double y0, double a, double b, uint n)
+            {
+                // Неявный метод Рунге — Кутты второго порядка
+                // Простейшим неявным методом Рунге — Кутты является модифицированный метод Эйлера «с пересчётом»\
+                // Модифицированный метод Эйлера «с пересчётом» имеет второй порядок точности
+                if (n == 0)
+                {
+                    MessageBox.Show("ERROR, на 0 делить нельзя");
+                    return null;
+                }
+                double h = (b - a) / n;
+                double[,] res = new double[n + 1, 2];
 
 
+                double x = x0, y = y0;
+                double y_prog, x_prog; // прогноз
+                for (int i = 0; i < n; i++)
+                {
+                    res[i, 0] = x;
+                    res[i, 1] = y;
 
 
+                    // прогноз
+                    y_prog = y + h * f(x, y);
+                    x_prog = x + h;
 
-
+                    // Коррекция
+                    y = y + h * (f(x,y) + f(x_prog, y_prog)) / 2;
+                    x = x + h;
+                }
+                res[n, 0] = x;
+                res[n, 1] = y;
 
 
                 // Возвращет матрицу из двух строк: X и Y
@@ -483,7 +550,7 @@ namespace Computationalmathematics
             }
             else if (методРунгеКуттыToolStripMenuItem.Checked)
             {
-                res = DiffEqualation.RungeKuttaMethod(x0, y0, a, b, n);
+                res = DiffEqualation.RungeKuttaMethod2(x0, y0, a, b, n);
             }
             else
             {

@@ -305,7 +305,7 @@
             this.textBoxX0.Name = "textBoxX0";
             this.textBoxX0.Size = new System.Drawing.Size(85, 20);
             this.textBoxX0.TabIndex = 14;
-            this.textBoxX0.Text = "1";
+            this.textBoxX0.Text = "0";
             // 
             // textBoxY0
             // 
@@ -313,7 +313,7 @@
             this.textBoxY0.Name = "textBoxY0";
             this.textBoxY0.Size = new System.Drawing.Size(85, 20);
             this.textBoxY0.TabIndex = 15;
-            this.textBoxY0.Text = "5";
+            this.textBoxY0.Text = "1";
             // 
             // label_Interval
             // 
@@ -330,7 +330,7 @@
             this.textBox_IntervalA.Name = "textBox_IntervalA";
             this.textBox_IntervalA.Size = new System.Drawing.Size(101, 20);
             this.textBox_IntervalA.TabIndex = 17;
-            this.textBox_IntervalA.Text = "1";
+            this.textBox_IntervalA.Text = "0";
             // 
             // textBox_IntervalB
             // 

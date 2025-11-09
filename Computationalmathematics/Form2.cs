@@ -37,8 +37,8 @@ namespace Computationalmathematics
             chart1.Series.Clear();
             chart1.ChartAreas[0].AxisX.Title = "X";
             chart1.ChartAreas[0].AxisY.Title = "Y";
-            chart1.Titles.Add("Решение ОДУ методом Эйлера");
-
+            
+            
             // Создаём серию
             var series = new Series
             {
