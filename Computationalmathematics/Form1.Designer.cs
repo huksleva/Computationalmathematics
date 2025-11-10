@@ -215,7 +215,7 @@
             // 
             this.primerLabel.AutoSize = true;
             this.primerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.primerLabel.Location = new System.Drawing.Point(12, 111);
+            this.primerLabel.Location = new System.Drawing.Point(1, 111);
             this.primerLabel.Name = "primerLabel";
             this.primerLabel.Size = new System.Drawing.Size(567, 63);
             this.primerLabel.TabIndex = 5;
@@ -227,7 +227,7 @@
             this.textB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textB.Location = new System.Drawing.Point(12, 97);
             this.textB.Name = "textB";
-            this.textB.Size = new System.Drawing.Size(30, 23);
+            this.textB.Size = new System.Drawing.Size(133, 23);
             this.textB.TabIndex = 6;
             this.textB.Text = "5";
             // 
@@ -236,7 +236,7 @@
             this.textA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textA.Location = new System.Drawing.Point(12, 177);
             this.textA.Name = "textA";
-            this.textA.Size = new System.Drawing.Size(30, 23);
+            this.textA.Size = new System.Drawing.Size(133, 23);
             this.textA.TabIndex = 7;
             this.textA.Text = "1";
             // 
@@ -275,7 +275,7 @@
             // 
             this.answerLabel.AutoSize = true;
             this.answerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.answerLabel.Location = new System.Drawing.Point(560, 111);
+            this.answerLabel.Location = new System.Drawing.Point(870, 111);
             this.answerLabel.Name = "answerLabel";
             this.answerLabel.Size = new System.Drawing.Size(0, 63);
             this.answerLabel.TabIndex = 11;

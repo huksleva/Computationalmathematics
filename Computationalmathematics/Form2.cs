@@ -35,8 +35,8 @@ namespace Computationalmathematics
 
             // Настраиваем график
             chart1.Series.Clear();
-            chart1.ChartAreas[0].AxisX.Title = "X";
-            chart1.ChartAreas[0].AxisY.Title = "Y";
+            chart1.ChartAreas[0].AxisX.Title = "t";
+            chart1.ChartAreas[0].AxisY.Title = "m";
             
             
             // Создаём серию

@@ -33,9 +33,9 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.dataGridDIFF = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDIFF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -61,20 +61,6 @@
             this.dataGridDIFF.Size = new System.Drawing.Size(349, 452);
             this.dataGridDIFF.TabIndex = 0;
             // 
-            // X
-            // 
-            this.X.HeaderText = "X";
-            this.X.Name = "X";
-            this.X.ReadOnly = true;
-            this.X.Width = 39;
-            // 
-            // Y
-            // 
-            this.Y.HeaderText = "Y";
-            this.Y.Name = "Y";
-            this.Y.ReadOnly = true;
-            this.Y.Width = 39;
-            // 
             // chart1
             // 
             chartArea1.Name = "ChartArea1";
@@ -90,6 +76,20 @@
             this.chart1.Size = new System.Drawing.Size(446, 452);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
+            // 
+            // X
+            // 
+            this.X.HeaderText = "t";
+            this.X.Name = "X";
+            this.X.ReadOnly = true;
+            this.X.Width = 35;
+            // 
+            // Y
+            // 
+            this.Y.HeaderText = "m";
+            this.Y.Name = "Y";
+            this.Y.ReadOnly = true;
+            this.Y.Width = 40;
             // 
             // Form2
             // 
@@ -111,8 +111,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridDIFF;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataGridViewTextBoxColumn X;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

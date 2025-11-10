@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Computationalmathematics
 {
+    using System.Numerics;
     public partial class Form1 : Form
     {
         public Form1()
@@ -18,12 +20,16 @@ namespace Computationalmathematics
         }
 
         private Form2 form2;
-
+        
         public static class Integral
         {
-            public static double integralF(double x)
+            private static double integralF(double x)
             {
-                return 2 * Math.Log(x) + x + 1;
+                //return 2 * Math.Log(x) + x + 1;
+                double r_Eath = 6377000;
+                double R = 60.27 * r_Eath;
+                double g = 9.81;
+                return Math.Sqrt(x*R/(2*g*Math.Pow(r_Eath, 2)*(R-x)));
             }
             public static double leftRectangleMethod(double a, double b, uint n)
             {
@@ -101,7 +107,7 @@ namespace Computationalmathematics
 
                 return sum * h / 3.0;
             }
-            public static double AdaptiveSimpsonRecursive(double a, double b, double eps, double fa, double fm, double fb)
+            private static double AdaptiveSimpsonRecursive(double a, double b, double eps, double fa, double fm, double fb)
             {
                 double m = (a + b) / 2;
                 double lm = (a + m) / 2; // середина левой половины
@@ -139,11 +145,16 @@ namespace Computationalmathematics
         }
         public static class DiffEqualation
         {
-            public static double f(double x, double y)
+            private static double f(double x, double y)
             {
-                return Math.Pow(x, 2) + 4 * x + y;   //dy/dx = x² + 4x + y
+                //return Math.Pow(x, 2) + 4 * x + y;   //dy/dx = x² + 4x + y
+
+                //double r = 0.003;
+                //return -r * (y - 22);
+
+                return -0.00044 * y;
             }
-            public static uint factorial(uint x)
+            private static uint factorial(uint x)
             {
                 uint res = 1;
                 for (uint i = 1; i <= x; i++)
@@ -152,7 +163,7 @@ namespace Computationalmathematics
                 }
                 return res;
             }
-            public static uint C(uint n, uint k)
+            private static uint C(uint n, uint k)
             {
                 if (k > n)
                 {
@@ -645,7 +656,7 @@ namespace Computationalmathematics
             сПеременнымШагомToolStripMenuItem.Visible = true;
 
             answerLabel.Text = "";
-            primerLabel.Text = "∫(2 * ln(x) + x + 1)dx =";
+            primerLabel.Text = "∫(r*R / (2*g*r_Earth^2*(R-r)))dr =";
 
             textA.Visible = true;
             textB.Visible = true;
@@ -661,7 +672,7 @@ namespace Computationalmathematics
             сФиксированнымШагомToolStripMenuItem.Visible = true;
             сФиксированнымШагомToolStripMenuItem.Checked = true; // checked=true
 
-            primerLabel.Text = "dy/dx = x² + 4x + y";
+            primerLabel.Text = "dm/dt = -0.00044 * m";
             answerLabel.Text = "";
 
             textBoxX0.Visible = true;
