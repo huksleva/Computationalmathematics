@@ -36,13 +36,13 @@ namespace Computationalmathematics
             // Настраиваем график
             chart1.Series.Clear();
             chart1.ChartAreas[0].AxisX.Title = "t";
-            chart1.ChartAreas[0].AxisY.Title = "m";
+            chart1.ChartAreas[0].AxisY.Title = "T";
             
             
             // Создаём серию
             var series = new Series
             {
-                Name = "y(x)",
+                Name = "T(t)",
                 ChartType = SeriesChartType.Line,
                 MarkerStyle = MarkerStyle.Circle,
                 MarkerSize = 5,

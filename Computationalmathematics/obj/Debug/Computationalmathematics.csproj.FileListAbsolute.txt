@@ -8,7 +8,6 @@ C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Comp
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.csproj.CoreCompileInputs.cache
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe
 C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.pdb
-C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.exe.config
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.exe.config
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.exe
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\Computationalmathematics.pdb
@@ -31,3 +30,7 @@ C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debu
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\MathNet.Numerics.dll
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\bin\Debug\MathNet.Numerics.xml
 C:\Leo\проекты\Computationalmathematics\Computationalmathematics\obj\Debug\Computat.B1201865.Up2Date
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\bin\Debug\MathNet.Numerics.dll
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\bin\Debug\MathNet.Numerics.xml
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computationalmathematics.Form2.resources
+C:\Leo\projects\Computationalmathematics\Computationalmathematics\obj\Debug\Computat.B1201865.Up2Date

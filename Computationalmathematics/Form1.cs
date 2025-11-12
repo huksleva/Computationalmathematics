@@ -149,10 +149,8 @@ namespace Computationalmathematics
             {
                 //return Math.Pow(x, 2) + 4 * x + y;   //dy/dx = x² + 4x + y
 
-                //double r = 0.003;
-                //return -r * (y - 22);
-
-                return -0.00044 * y;
+               
+                return (-0.003) * (y - 22);
             }
             private static uint factorial(uint x)
             {
@@ -672,7 +670,7 @@ namespace Computationalmathematics
             сФиксированнымШагомToolStripMenuItem.Visible = true;
             сФиксированнымШагомToolStripMenuItem.Checked = true; // checked=true
 
-            primerLabel.Text = "dm/dt = -0.00044 * m";
+            primerLabel.Text = "dT/dt = -0.003 * (T - 22)";
             answerLabel.Text = "";
 
             textBoxX0.Visible = true;
