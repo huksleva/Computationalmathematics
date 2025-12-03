@@ -12,6 +12,8 @@ using System.Windows.Forms;
 namespace Computationalmathematics
 {
     using System.Numerics;
+    using System.Reflection.Emit;
+
     public partial class Form1 : Form
     {
         public Form1()
@@ -271,176 +273,29 @@ namespace Computationalmathematics
         }
         public static class NonLinearEqualation
         {
-            public static double Phi(double x)
-            {
-                return (Math.Pow(x, 3) + Math.Sin(x) + 1) / 2.0;
-            }
-            public static double NonLinearF(double x)
-            {
-                return Math.Pow(x, 3) - 2 * x + Math.Sin(x) + 1;
-            }
-            public static double NonLinearDF(double x)
-            {
-                return 3 * x * x - 2 + Math.Cos(x);
-            }
-            public static double BisectionMethod(double a, double b, double eps, uint maxIter)
-            {
-                double fa = NonLinearF(a);
-                double fb = NonLinearF(b);
 
-                if (fa * fb > 0)
-                    throw new ArgumentException("Нет корня на интервале [a, b]");
-
-                for (uint i = 0; i < maxIter; i++)
-                {
-                    double c = (a + b) / 2;
-                    double fc = NonLinearF(c);
-
-                    if (Math.Abs(fc) < eps || (b - a) / 2 < eps)
-                        return c;
-
-                    if (fa * fc < 0)
-                        b = c;
-                    else
-                        a = c;
-                }
-
-                return (a + b) / 2;
-            }
-            public static double NewtonMethod(double x0, double eps, uint maxIter)
-            {
-                double x = x0;
-
-                for (uint i = 0; i < maxIter; i++)
-                {
-                    double fx = NonLinearF(x);
-                    double dfx = NonLinearDF(x);
-
-                    if (Math.Abs(dfx) < 1e-12)
-                        throw new InvalidOperationException("Производная близка к нулю. Метод Ньютона не применим.");
-
-                    double xNew = x - fx / dfx;
-
-                    if (Math.Abs(xNew - x) < eps)
-                        return xNew;
-
-                    x = xNew;
-                }
-
-                return x;
-            }
-            public static double SecantMethod(double x0, double x1, double eps, uint maxIter)
-            {
-                double f0 = NonLinearF(x0);
-                double f1 = NonLinearF(x1);
-
-                for (uint i = 0; i < maxIter; i++)
-                {
-                    if (Math.Abs(f1 - f0) < 1e-12)
-                        throw new InvalidOperationException("Разность функций слишком мала. Метод хорд не сходится.");
-
-                    double x2 = x1 - f1 * (x1 - x0) / (f1 - f0);
-                    double f2 = NonLinearF(x2);
-
-                    if (Math.Abs(x2 - x1) < eps)
-                        return x2;
-
-                    x0 = x1; f0 = f1;
-                    x1 = x2; f1 = f2;
-                }
-
-                return x1;
-            }
-            public static double SimpleIterationMethod(double a, double b, double eps, uint maxIter)
-            {
-                // Начальное приближение — середина интервала
-                double x = (a + b) / 2;
-
-                for (uint i = 0; i < maxIter; i++)
-                {
-                    double xNew = Phi(x);
-
-                    // Проверка выхода за пределы интервала (опционально)
-                    if (xNew < a || xNew > b)
-                    {
-                        // Можно продолжить, но лучше предупредить
-                        // Или просто игнорировать — зависит от задачи
-                    }
-
-                    if (Math.Abs(xNew - x) < eps)
-                        return xNew;
-
-                    x = xNew;
-                }
-
-                return x;
-            }
-            public static void calculateNotLinearEquation(string A, string B, string N, Label label)
-            {
-                const double eps = 1e-8;
-                uint maxIter = 100; // по умолчанию
-
-                // Попытаемся прочитать n как макс. число итераций
-                if (uint.TryParse(N, out uint nFromInput) && nFromInput > 0)
-                    maxIter = nFromInput;
-
-                try
-                {
-                    double result;
-
-
-                    if (true) // BisectionMethod
-                    {
-                        if (!double.TryParse(A, out double a) || !double.TryParse(B, out double b))
-                            throw new ArgumentException("Введите a и b (границы интервала)");
-
-                        double fa = NonLinearF(a);
-                        double fb = NonLinearF(b);
-                        if (fa * fb > 0)
-                            throw new ArgumentException("f(a) и f(b) должны иметь разные знаки");
-                        
-                        result = BisectionMethod(a, b, eps, maxIter);
-                    }
-                    else if (true) //newton
-                    {
-                        if (!double.TryParse(A, out double x0))
-                            throw new ArgumentException("Введите начальное приближение x0");
-
-                        result = NewtonMethod(x0, eps, maxIter);
-                    }
-                    else if (true) //secant
-                    {
-                        if (!double.TryParse(A, out double x0) || !double.TryParse(B, out double x1))
-                            throw new ArgumentException("Введите два начальных приближения: x0 и x1");
-
-                        result = SecantMethod(x0, x1, eps, maxIter);
-                    }
-                    else if (true) //simpleIteration
-                    {
-                        if (!double.TryParse(A, out double a) || !double.TryParse(B, out double b))
-                            throw new ArgumentException("Введите интервал [a, b]");
-
-                        // Для метода простой итерации нужно привести уравнение к виду x = φ(x)
-                        // Возьмём: φ(x) = (x^3 + sin(x) + 1) / 2  → из x^3 - 2x + sin(x) + 1 = 0 ⇒ 2x = x^3 + sin(x) + 1
-                        result = SimpleIterationMethod(a, b, eps, maxIter);
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Не выбран метод решения");
-                    }
-
-                    label.Text = result.ToString("F10");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка в вычислении: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
         public static class ElementaryFun
         {
+			public static double powerSeriesMaclorenaMethod(double x, uint n)
+			{
 
-        }
+				return 0;
+			}
+
+			public static double ChebushevMethod(double x, uint n)
+			{
+
+				return 0;
+			}
+
+			public static double iterationMethod(double x, uint n)
+			{
+
+				return 0;
+			}
+
+		}
 
 
 
@@ -590,14 +445,34 @@ namespace Computationalmathematics
         }
         private void calculateElementaryFunctions()
         {
+            uint n = CheckOnUIntNumber(textBoxN.Text);
+            double x = CheckOnNumber(textBoxX0.Text);
 
-        }
+			// Начинаем считать
+			if (разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Checked)
+			{
+                answerLabel.Text = ElementaryFun.powerSeriesMaclorenaMethod(x, n).ToString();
+			}
+			else if (многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked)
+			{
+				answerLabel.Text =  ElementaryFun.ChebushevMethod(x, n).ToString();
+			}
+			else if (методТрапецийToolStripMenuItem.Checked)
+			{
+				answerLabel.Text = ElementaryFun.iterationMethod(x, n).ToString();
+			}
+			else
+			{
+				MessageBox.Show("ERROR METHOD!");
+			}
+
+		}
 
 
 
 
-        // Нажатие на кнопку - вычисление примера
-        private void button1_Click(object sender, EventArgs e)
+		// Нажатие на кнопку - вычисление примера
+		private void button1_Click(object sender, EventArgs e)
         {
             if (ToolStripMenuItem1.Checked)
             {
@@ -685,45 +560,27 @@ namespace Computationalmathematics
         }
         private void SetupnotLinearEquationsMethods()
         {
-            численныйМетодToolStripMenuItem.DropDownItems.Clear();
-            алгоритмToolStripMenuItem.DropDownItems.Clear();
-
-            // Численные методы для нелинейных уравнений
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод половинного деления", "bisection", true);
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод Ньютона (касательных)", "newton");
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод хорд", "secant");
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Метод простой итерации", "simpleIteration");
-
-            // Для нелинейных уравнений обычно используется постоянный или адаптивный контроль сходимости,
-            // но шаг N может не требоваться — поэтому скроем поле ввода N
-            // (видимость будет управляться в обработчике клика по алгоритму)
-
-            // Алгоритмы (можно оставить те же, или упростить)
-            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
-            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
-
             primerLabel.Text = "f(x) = e^x + x^3 - ln(x)";
             answerLabel.Text = "";
         }
         private void SetupelementaryFunctionsMethod()
         {
-            численныйМетодToolStripMenuItem.DropDownItems.Clear();
-            алгоритмToolStripMenuItem.DropDownItems.Clear();
+			// Численные методы
+			разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Visible = true;
+			многочисленныхПриближенийЧебышеваToolStripMenuItem.Visible = true;
+			итерацийToolStripMenuItem.Visible = true;
 
-            численныйМетодToolStripMenuItem.DropDownItems.Clear();
-            алгоритмToolStripMenuItem.DropDownItems.Clear();
+            разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Checked = true;
 
-            // Методы для работы с элементарными функциями
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Разложение в ряд Тейлора", "taylor", true);
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное дифференцирование", "differentiation");
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Численное интегрирование", "integration"); // если нужно
-            //AddCheckableItem(численныйМетодToolStripMenuItem.DropDownItems, "Вычисление функции напрямую", "direct");
+            textBoxX0.Visible = true;
+            labelX0.Visible = true;
+            textBoxN.Visible = true;
+            label1.Visible = true;
 
-            // Алгоритмы — обычно требуется указать количество членов ряда или шаг
-            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с постоянным шагом", "постоянныйШаг", true);
-            //AddCheckableItem(алгоритмToolStripMenuItem.DropDownItems, "Алгоритм с переменным шагом", "переменныйШаг");
+            
 
-            primerLabel.Text = "e^x + x^2 - ln(x) + x = ";
+
+			primerLabel.Text = "e^x + x^2 - ln(x) + x = ";
             answerLabel.Text = "";
         }
 

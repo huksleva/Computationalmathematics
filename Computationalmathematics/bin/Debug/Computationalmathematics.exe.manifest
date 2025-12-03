@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Computationalmathematics.exe" size="40936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Computationalmathematics.exe" size="40424">
       <assemblyIdentity name="Computationalmathematics" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Ip7XtZnwFFeQg6tdn3iAyKo1fXSj5pLY8MUbXQsjmPg=</dsig:DigestValue>
+        <dsig:DigestValue>Th5UhHOe0hg7xU6q9jPuHVQpoTTPcY5mXDVASwcRf1c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

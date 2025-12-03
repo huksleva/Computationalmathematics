@@ -42,6 +42,9 @@
 			this.методПараболToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.методЭйлераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.методРунгеКуттыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.разложениеВСтепенныеРядыМаклоренаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.многочисленныхПриближенийЧебышеваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.итерацийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.алгоритмToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.алгоритмСПостояннымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.сПеременнымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +77,7 @@
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-			this.menuStrip1.Size = new System.Drawing.Size(1188, 30);
+			this.menuStrip1.Size = new System.Drawing.Size(1188, 28);
 			this.menuStrip1.TabIndex = 2;
 			this.menuStrip1.Text = "menuStrip1";
 			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -87,7 +90,7 @@
             this.ToolStripMenuItem3,
             this.ToolStripMenuItem4});
 			this.типЗадачиToolStripMenuItem.Name = "типЗадачиToolStripMenuItem";
-			this.типЗадачиToolStripMenuItem.Size = new System.Drawing.Size(101, 26);
+			this.типЗадачиToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
 			this.типЗадачиToolStripMenuItem.Text = "Тип задачи";
 			this.типЗадачиToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ТипЗадачиToolStripMenuItem_DropDownItemClicked);
 			this.типЗадачиToolStripMenuItem.Click += new System.EventHandler(this.численноеИнтегрированиеToolStripMenuItem_Click);
@@ -126,48 +129,69 @@
             this.методТрапецийToolStripMenuItem,
             this.методПараболToolStripMenuItem,
             this.методЭйлераToolStripMenuItem,
-            this.методРунгеКуттыToolStripMenuItem});
+            this.методРунгеКуттыToolStripMenuItem,
+            this.разложениеВСтепенныеРядыМаклоренаToolStripMenuItem,
+            this.многочисленныхПриближенийЧебышеваToolStripMenuItem,
+            this.итерацийToolStripMenuItem});
 			this.численныйМетодToolStripMenuItem.Name = "численныйМетодToolStripMenuItem";
-			this.численныйМетодToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
+			this.численныйМетодToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
 			this.численныйМетодToolStripMenuItem.Text = "Численный метод";
 			this.численныйМетодToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ЧисленныйМетодToolStripMenuItem_DropDownItemClicked);
 			// 
 			// методПрямоугольниковЛевыхЧастейToolStripMenuItem
 			// 
 			this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Name = "методПрямоугольниковЛевыхЧастейToolStripMenuItem";
-			this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+			this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
 			this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Text = "Метод прямоугольников левых частей";
 			this.методПрямоугольниковЛевыхЧастейToolStripMenuItem.Click += new System.EventHandler(this.методПрямоугольниковЛевыхЧастейToolStripMenuItem_Click);
 			// 
 			// методПрямоугольниковПравыхЧастейToolStripMenuItem
 			// 
 			this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Name = "методПрямоугольниковПравыхЧастейToolStripMenuItem";
-			this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+			this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
 			this.методПрямоугольниковПравыхЧастейToolStripMenuItem.Text = "Метод прямоугольников правых частей";
 			// 
 			// методТрапецийToolStripMenuItem
 			// 
 			this.методТрапецийToolStripMenuItem.Name = "методТрапецийToolStripMenuItem";
-			this.методТрапецийToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+			this.методТрапецийToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
 			this.методТрапецийToolStripMenuItem.Text = "Метод трапеций";
 			// 
 			// методПараболToolStripMenuItem
 			// 
 			this.методПараболToolStripMenuItem.Name = "методПараболToolStripMenuItem";
-			this.методПараболToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+			this.методПараболToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
 			this.методПараболToolStripMenuItem.Text = "Метод парабол";
 			// 
 			// методЭйлераToolStripMenuItem
 			// 
 			this.методЭйлераToolStripMenuItem.Name = "методЭйлераToolStripMenuItem";
-			this.методЭйлераToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+			this.методЭйлераToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
 			this.методЭйлераToolStripMenuItem.Text = "Метод Эйлера";
 			// 
 			// методРунгеКуттыToolStripMenuItem
 			// 
 			this.методРунгеКуттыToolStripMenuItem.Name = "методРунгеКуттыToolStripMenuItem";
-			this.методРунгеКуттыToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+			this.методРунгеКуттыToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
 			this.методРунгеКуттыToolStripMenuItem.Text = "Метод Рунге-Кутты";
+			// 
+			// разложениеВСтепенныеРядыМаклоренаToolStripMenuItem
+			// 
+			this.разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Name = "разложениеВСтепенныеРядыМаклоренаToolStripMenuItem";
+			this.разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
+			this.разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Text = "Разложение в степенные ряды Маклорена";
+			// 
+			// многочисленныхПриближенийЧебышеваToolStripMenuItem
+			// 
+			this.многочисленныхПриближенийЧебышеваToolStripMenuItem.Name = "многочисленныхПриближенийЧебышеваToolStripMenuItem";
+			this.многочисленныхПриближенийЧебышеваToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
+			this.многочисленныхПриближенийЧебышеваToolStripMenuItem.Text = "Многочисленных приближений Чебышёва";
+			// 
+			// итерацийToolStripMenuItem
+			// 
+			this.итерацийToolStripMenuItem.Name = "итерацийToolStripMenuItem";
+			this.итерацийToolStripMenuItem.Size = new System.Drawing.Size(395, 26);
+			this.итерацийToolStripMenuItem.Text = "Итераций";
 			// 
 			// алгоритмToolStripMenuItem
 			// 
@@ -176,7 +200,7 @@
             this.сПеременнымШагомToolStripMenuItem,
             this.сФиксированнымШагомToolStripMenuItem});
 			this.алгоритмToolStripMenuItem.Name = "алгоритмToolStripMenuItem";
-			this.алгоритмToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
+			this.алгоритмToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
 			this.алгоритмToolStripMenuItem.Text = "Алгоритм";
 			this.алгоритмToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.АлгоритмToolStripMenuItem_DropDownItemClicked);
 			// 
@@ -226,9 +250,9 @@
 			// 
 			this.textB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textB.Location = new System.Drawing.Point(16, 119);
-			this.textB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textB.Margin = new System.Windows.Forms.Padding(4);
 			this.textB.Name = "textB";
-			this.textB.Size = new System.Drawing.Size(176, 26);
+			this.textB.Size = new System.Drawing.Size(90, 26);
 			this.textB.TabIndex = 6;
 			this.textB.Text = "5";
 			// 
@@ -236,9 +260,9 @@
 			// 
 			this.textA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textA.Location = new System.Drawing.Point(16, 218);
-			this.textA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textA.Margin = new System.Windows.Forms.Padding(4);
 			this.textA.Name = "textA";
-			this.textA.Size = new System.Drawing.Size(176, 26);
+			this.textA.Size = new System.Drawing.Size(90, 26);
 			this.textA.TabIndex = 7;
 			this.textA.Text = "1";
 			// 
@@ -246,7 +270,7 @@
 			// 
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button1.Location = new System.Drawing.Point(511, 304);
-			this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.button1.Margin = new System.Windows.Forms.Padding(4);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(207, 34);
 			this.button1.TabIndex = 8;
@@ -258,7 +282,7 @@
 			// 
 			this.textBoxN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBoxN.Location = new System.Drawing.Point(251, 310);
-			this.textBoxN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textBoxN.Margin = new System.Windows.Forms.Padding(4);
 			this.textBoxN.Name = "textBoxN";
 			this.textBoxN.Size = new System.Drawing.Size(107, 26);
 			this.textBoxN.TabIndex = 9;
@@ -289,28 +313,28 @@
 			// labelX0
 			// 
 			this.labelX0.AutoSize = true;
-			this.labelX0.Location = new System.Drawing.Point(0, 356);
+			this.labelX0.Location = new System.Drawing.Point(9, 355);
 			this.labelX0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelX0.Name = "labelX0";
-			this.labelX0.Size = new System.Drawing.Size(28, 16);
+			this.labelX0.Size = new System.Drawing.Size(25, 16);
 			this.labelX0.TabIndex = 12;
-			this.labelX0.Text = "to =";
+			this.labelX0.Text = "X =";
 			this.labelX0.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// labelY0
 			// 
 			this.labelY0.AutoSize = true;
-			this.labelY0.Location = new System.Drawing.Point(0, 384);
+			this.labelY0.Location = new System.Drawing.Point(8, 384);
 			this.labelY0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelY0.Name = "labelY0";
-			this.labelY0.Size = new System.Drawing.Size(34, 16);
+			this.labelY0.Size = new System.Drawing.Size(26, 16);
 			this.labelY0.TabIndex = 13;
-			this.labelY0.Text = "To =";
+			this.labelY0.Text = "Y =";
 			// 
 			// textBoxX0
 			// 
 			this.textBoxX0.Location = new System.Drawing.Point(47, 352);
-			this.textBoxX0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textBoxX0.Margin = new System.Windows.Forms.Padding(4);
 			this.textBoxX0.Name = "textBoxX0";
 			this.textBoxX0.Size = new System.Drawing.Size(112, 22);
 			this.textBoxX0.TabIndex = 14;
@@ -319,7 +343,7 @@
 			// textBoxY0
 			// 
 			this.textBoxY0.Location = new System.Drawing.Point(47, 384);
-			this.textBoxY0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textBoxY0.Margin = new System.Windows.Forms.Padding(4);
 			this.textBoxY0.Name = "textBoxY0";
 			this.textBoxY0.Size = new System.Drawing.Size(112, 22);
 			this.textBoxY0.TabIndex = 15;
@@ -338,7 +362,7 @@
 			// textBox_IntervalA
 			// 
 			this.textBox_IntervalA.Location = new System.Drawing.Point(124, 421);
-			this.textBox_IntervalA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textBox_IntervalA.Margin = new System.Windows.Forms.Padding(4);
 			this.textBox_IntervalA.Name = "textBox_IntervalA";
 			this.textBox_IntervalA.Size = new System.Drawing.Size(133, 22);
 			this.textBox_IntervalA.TabIndex = 17;
@@ -347,7 +371,7 @@
 			// textBox_IntervalB
 			// 
 			this.textBox_IntervalB.Location = new System.Drawing.Point(297, 421);
-			this.textBox_IntervalB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textBox_IntervalB.Margin = new System.Windows.Forms.Padding(4);
 			this.textBox_IntervalB.Name = "textBox_IntervalB";
 			this.textBox_IntervalB.Size = new System.Drawing.Size(133, 22);
 			this.textBox_IntervalB.TabIndex = 18;
@@ -421,6 +445,9 @@
         private System.Windows.Forms.ToolStripMenuItem методЭйлераToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сФиксированнымШагомToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem методРунгеКуттыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem разложениеВСтепенныеРядыМаклоренаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem многочисленныхПриближенийЧебышеваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem итерацийToolStripMenuItem;
     }
 }
 
