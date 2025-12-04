@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,6 +39,17 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form2.cs",
+              "RelativeDocumentMoniker": "Computationalmathematics\\Form2.cs",
+              "ToolTip": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Computationalmathematics\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T10:18:34.843Z"
             },
             {
               "$type": "Document",
@@ -72,21 +83,10 @@
               "RelativeDocumentMoniker": "Computationalmathematics\\Form1.cs",
               "ToolTip": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form1.cs",
               "RelativeToolTip": "Computationalmathematics\\Form1.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwGUBAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAA0wGYBAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-07T11:32:59.284Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form2.cs",
-              "RelativeDocumentMoniker": "Computationalmathematics\\Form2.cs",
-              "ToolTip": "C:\\Leo\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Computationalmathematics\\Computationalmathematics\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Computationalmathematics\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T10:18:34.843Z"
             }
           ]
         }
