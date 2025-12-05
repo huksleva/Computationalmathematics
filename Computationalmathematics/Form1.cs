@@ -8,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Вспомогательная штука
+using static Computationalmathematics.Form1.help_to_ElementaryFun;
 
 namespace Computationalmathematics
 {
-    using System.Numerics;
-    using System.Reflection.Emit;
-
     public partial class Form1 : Form
     {
         public Form1()
@@ -23,6 +22,83 @@ namespace Computationalmathematics
 
         private Form2 form2;
         
+        public static class help_to_ElementaryFun
+        {
+            // Общие вспомогательные функции
+            public static uint factorial(uint x)
+            {
+                uint res = 1;
+                for (uint i = 1; i <= x; i++)
+                {
+                    res *= i;
+                }
+                return res;
+            }
+            // Вспомогательные функции для powerSeriesMaclorenaMethod
+            // e^x
+            public static double powerSeriesMaclorena_e_x(double x, uint n)
+            {
+                double res = 0;
+                for (uint i = 0; i < n; i++)
+                {
+                    res += Math.Pow(x, i) / factorial(i);
+                }
+                return res;
+            }
+            // sinx
+            public static double powerSeriesMaclorena_sinx(double x, uint n)
+            {
+                double res = 0;
+                for (uint i = 0; i < n; i++)
+                {
+                    res += Math.Pow(-1, i) * Math.Pow(x, 2 * i + 1) / factorial(2 * i + 1);
+                }
+                return res;
+            }
+            // cosx
+            public static double powerSeriesMaclorena_cosx(double x, uint n)
+            {
+                double res = 0;
+                for (uint i = 0; i < n; i++)
+                {
+                    res += Math.Pow(-1, i) * Math.Pow(x, 2 * i + 1) / factorial(2 * i + 1);
+                }
+                return res;
+            }
+            // shx
+            public static double powerSeriesMaclorena_shx(double x, uint n)
+            {
+                double res = 0;
+                for (uint i = 0; i < n; i++)
+                {
+                    res += Math.Pow(x, 2 * i - 1) / factorial(2 * i - 1);
+                }
+                return res;
+            }
+            // chx
+            public static double powerSeriesMaclorena_chx(double x, uint n)
+            {
+                double res = 0;
+                for (uint i = 0; i < n; i++)
+                {
+                    res += Math.Pow(x, 2 * i) / factorial(2 * i);
+                }
+                return res;
+            }
+            // lnx
+            public static double powerSeriesMaclorena_lnx(double x, uint n)
+            {
+                double res = 0;
+                for (uint i = 0; i < n; i++)
+                {
+                    res += 1 / (2 * i - 1) * Math.Pow((1 - x) / (1 + x), 2 * i - 1);
+                }
+                return -2 * res;
+            }
+        }
+
+
+
         public static class Integral
         {
             private static double integralF(double x)
@@ -277,18 +353,16 @@ namespace Computationalmathematics
         }
         public static class ElementaryFun
         {
-			public static double powerSeriesMaclorenaMethod(double x, uint n)
+            public static double powerSeriesMaclorenaMethod(double x, uint n)
 			{
-
-				return 0;
+                double[] a = { 0.1, 1 };
+                return powerSeriesMaclorena_e_x(x, n);
 			}
-
 			public static double ChebushevMethod(double x, uint n)
 			{
 
 				return 0;
 			}
-
 			public static double iterationMethod(double x, uint n)
 			{
 
@@ -504,11 +578,9 @@ namespace Computationalmathematics
             allElementInvisible();
             allMetodsInvisible();
             allAlgoritmsInvisible();
-            SetupNumericalIntegrationMethods();
 
-            ToolStripMenuItem1.Checked = true;
-            методПрямоугольниковЛевыхЧастейToolStripMenuItem.Checked = true;
-            алгоритмСПостояннымШагомToolStripMenuItem.Checked = true;
+            SetupelementaryFunctionsMethod();
+            ToolStripMenuItem4.Checked = true;
         }
 
         
@@ -580,7 +652,7 @@ namespace Computationalmathematics
             
 
 
-			primerLabel.Text = "e^x + x^2 - ln(x) + x = ";
+			primerLabel.Text = "e^x = ";
             answerLabel.Text = "";
         }
 
