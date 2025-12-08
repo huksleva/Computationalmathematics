@@ -21,8 +21,8 @@ namespace Computationalmathematics
         }
 
         private Form2 form2;
-        
-        public static class help_to_ElementaryFun
+
+        public class help_to_ElementaryFun
         {
             // Общие вспомогательные функции
             public static uint factorial(uint x)
@@ -35,7 +35,6 @@ namespace Computationalmathematics
                 return res;
             }
             // Вспомогательные функции для powerSeriesMaclorenaMethod
-            // e^x
             public static double powerSeriesMaclorena_e_x(double x, uint n)
             {
                 double res = 0;
@@ -45,7 +44,6 @@ namespace Computationalmathematics
                 }
                 return res;
             }
-            // sinx
             public static double powerSeriesMaclorena_sinx(double x, uint n)
             {
                 double res = 0;
@@ -55,7 +53,6 @@ namespace Computationalmathematics
                 }
                 return res;
             }
-            // cosx
             public static double powerSeriesMaclorena_cosx(double x, uint n)
             {
                 double res = 0;
@@ -65,7 +62,6 @@ namespace Computationalmathematics
                 }
                 return res;
             }
-            // shx
             public static double powerSeriesMaclorena_shx(double x, uint n)
             {
                 double res = 0;
@@ -75,7 +71,6 @@ namespace Computationalmathematics
                 }
                 return res;
             }
-            // chx
             public static double powerSeriesMaclorena_chx(double x, uint n)
             {
                 double res = 0;
@@ -85,7 +80,6 @@ namespace Computationalmathematics
                 }
                 return res;
             }
-            // lnx
             public static double powerSeriesMaclorena_lnx(double x, uint n)
             {
                 double res = 0;
@@ -95,8 +89,49 @@ namespace Computationalmathematics
                 }
                 return -2 * res;
             }
-        }
 
+            public static double ChebishevFunction(double x, uint k)
+            {
+                if ((x < -1.0) || (x > 1.0))
+                {
+                    MessageBox.Show("INVALID VALUE. x must be: |x| <= 1");
+                    return 0;
+                }
+                return (Math.Pow((x + Math.Sqrt(Math.Pow(x, 2) - 1)), k) + Math.Pow((x - Math.Sqrt(Math.Pow(x, 2) - 1)), k)) / 2;
+            }
+
+            public static double iteration_sqrtx(double x, uint n)
+            {
+                if (x < 0.0) 
+                {
+                    MessageBox.Show("ERROR! X < 0!");
+                    return 0;
+                }
+                double res = (x < 1) ? 1.0 : x; // начальное значение можно выбрать любое больше 0
+                for (uint i = 0; i < n; i++)
+                {
+                    res = (res + x / res) / 2;
+                }
+                return res;
+            }
+            public static double iteration_1(double x, uint n)
+            {
+
+                return 0;
+            }
+            public static double iteration_2(double x, uint n)
+            {
+                return 0;
+            }
+            public static double iteration_3(double x, uint n)
+            {
+                return 0;
+            }
+            public static double iteration_4(double x, uint n)
+            {
+                return 0;
+            }
+        }
 
 
         public static class Integral
@@ -355,18 +390,21 @@ namespace Computationalmathematics
         {
             public static double powerSeriesMaclorenaMethod(double x, uint n)
 			{
-                double[] a = { 0.1, 1 };
                 return powerSeriesMaclorena_e_x(x, n);
 			}
-			public static double ChebushevMethod(double x, uint n)
+			public static double[,] ChebushevMethod(double x, uint n)
 			{
-
-				return 0;
+                double[,] res = new double[n,2];
+                for (uint i = 0; i < n; i++)
+                {
+                    res[i,0] = ChebishevFunction(x,i);
+                    res[i, 1] = i;
+                }
+				return res;
 			}
 			public static double iterationMethod(double x, uint n)
 			{
-
-				return 0;
+				return iteration_sqrtx(x, n);
 			}
 
 		}
@@ -521,6 +559,7 @@ namespace Computationalmathematics
         {
             uint n = CheckOnUIntNumber(textBoxN.Text);
             double x = CheckOnNumber(textBoxX0.Text);
+            
 
 			// Начинаем считать
 			if (разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Checked)
@@ -529,18 +568,30 @@ namespace Computationalmathematics
 			}
 			else if (многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked)
 			{
-				answerLabel.Text =  ElementaryFun.ChebushevMethod(x, n).ToString();
+                double[,] res =  ElementaryFun.ChebushevMethod(x, n);
+                // Если окно ещё не создано ИЛИ уже закрыто (и удалено)
+                if (form2 == null || form2.IsDisposed)
+                {
+                    form2 = new Form2(res);
+                    form2.FormClosed += (s, args) => form2 = null; // автоматически обнуляем при закрытии
+                    form2.Show();
+                }
+                else
+                {
+                    // Окно уже открыто → просто обновляем данные
+                    form2.UpdateData(res); // ← нужно реализовать этот метод в Form2
+                    form2.BringToFront();      // поднимаем окно поверх других
+                }
 			}
-			else if (методТрапецийToolStripMenuItem.Checked)
+			else if (итерацийToolStripMenuItem.Checked)
 			{
 				answerLabel.Text = ElementaryFun.iterationMethod(x, n).ToString();
 			}
 			else
 			{
-				MessageBox.Show("ERROR METHOD!");
+				MessageBox.Show("ERROR METHOD IN ELEMENTARY FUNCTION!");
 			}
-
-		}
+        }
 
 
 
@@ -652,7 +703,7 @@ namespace Computationalmathematics
             
 
 
-			primerLabel.Text = "e^x = ";
+			primerLabel.Text = "sqrt(x) = ";
             answerLabel.Text = "";
         }
 
