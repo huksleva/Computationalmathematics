@@ -97,39 +97,23 @@ namespace Computationalmathematics
                     MessageBox.Show("INVALID VALUE. x must be: |x| <= 1");
                     return 0;
                 }
-                return (Math.Pow((x + Math.Sqrt(Math.Pow(x, 2) - 1)), k) + Math.Pow((x - Math.Sqrt(Math.Pow(x, 2) - 1)), k)) / 2;
+                return (Math.Pow(x + Math.Sqrt(Math.Pow(x, 2) - 1), k) + Math.Pow(x - Math.Sqrt(Math.Pow(x, 2) - 1), k)) / 2;
             }
 
-            public static double iteration_sqrtx(double x, uint n)
+            public static double iteration_sqrt_x_p(double x, uint n, uint p)
             {
                 if (x < 0.0) 
                 {
                     MessageBox.Show("ERROR! X < 0!");
                     return 0;
                 }
+                
                 double res = (x < 1) ? 1.0 : x; // начальное значение можно выбрать любое больше 0
-                for (uint i = 0; i < n; i++)
+                for (uint i = 1; i <= n; i++)
                 {
-                    res = (res + x / res) / 2;
+                    res = ((p-1)*res + x/Math.Pow(res, p-1)) / p;
                 }
                 return res;
-            }
-            public static double iteration_1(double x, uint n)
-            {
-
-                return 0;
-            }
-            public static double iteration_2(double x, uint n)
-            {
-                return 0;
-            }
-            public static double iteration_3(double x, uint n)
-            {
-                return 0;
-            }
-            public static double iteration_4(double x, uint n)
-            {
-                return 0;
             }
         }
 
@@ -390,21 +374,42 @@ namespace Computationalmathematics
         {
             public static double powerSeriesMaclorenaMethod(double x, uint n)
 			{
-                return powerSeriesMaclorena_e_x(x, n);
-			}
-			public static double[,] ChebushevMethod(double x, uint n)
-			{
-                double[,] res = new double[n,2];
-                for (uint i = 0; i < n; i++)
+				double a0 = 0.9999998;
+				double a1 = 1.0000000;
+				double a2 = 0.5000063;
+				double a3 = 0.1666674;
+				double a4 = 0.0416350;
+				double a5 = 0.0083298;
+				double a6 = 0.0014393;
+				double a7 = 0.0002040;
+
+                double[] a = {a0, a1, a2, a3, a4, a5, a6, a7 };
+                double res = 0;
+                for (int i = 0; i < 7; i++)
                 {
-                    res[i,0] = ChebishevFunction(x,i);
-                    res[i, 1] = i;
+                    res += a[i] * Math.Pow(x, i);
+                }
+				return res;
+			}
+			public static double ChebushevMethod(double x, uint n)
+			{
+				double a1 = 1.000000002;
+				double a3 = -0.166666589;
+				double a5 = 0.008333075;
+				double a7 = -0.000198107;
+
+				double[] a = { a1, a3, a5, a7 };
+                double res = 0;
+
+				for (uint i = 0; i < 4; i++)
+                {
+                    res += a[i]*Math.Pow(x, i);
                 }
 				return res;
 			}
 			public static double iterationMethod(double x, uint n)
 			{
-				return iteration_sqrtx(x, n);
+				return iteration_sqrt_x_p(x, n, 2);
 			}
 
 		}
@@ -568,20 +573,8 @@ namespace Computationalmathematics
 			}
 			else if (многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked)
 			{
-                double[,] res =  ElementaryFun.ChebushevMethod(x, n);
-                // Если окно ещё не создано ИЛИ уже закрыто (и удалено)
-                if (form2 == null || form2.IsDisposed)
-                {
-                    form2 = new Form2(res);
-                    form2.FormClosed += (s, args) => form2 = null; // автоматически обнуляем при закрытии
-                    form2.Show();
-                }
-                else
-                {
-                    // Окно уже открыто → просто обновляем данные
-                    form2.UpdateData(res); // ← нужно реализовать этот метод в Form2
-                    form2.BringToFront();      // поднимаем окно поверх других
-                }
+				answerLabel.Text =  ElementaryFun.ChebushevMethod(x, n).ToString();
+                
 			}
 			else if (итерацийToolStripMenuItem.Checked)
 			{
@@ -703,7 +696,7 @@ namespace Computationalmathematics
             
 
 
-			primerLabel.Text = "sqrt(x) = ";
+			primerLabel.Text = "e^x = ";
             answerLabel.Text = "";
         }
 
