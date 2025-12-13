@@ -35,7 +35,7 @@ namespace Computationalmathematics
                 return res;
             }
             // Вспомогательные функции для powerSeriesMaclorenaMethod
-            public static double powerSeriesMaclorena_e_x(double x, uint n)
+            public static double powerSeriesMaclorena_exp(double x, uint n)
             {
                 double res = 0;
                 for (uint i = 0; i < n; i++)
@@ -100,7 +100,7 @@ namespace Computationalmathematics
                 return (Math.Pow(x + Math.Sqrt(Math.Pow(x, 2) - 1), k) + Math.Pow(x - Math.Sqrt(Math.Pow(x, 2) - 1), k)) / 2;
             }
 
-            public static double iteration_sqrt_x_p(double x, uint n, uint p)
+            public static double iterationNewton_sqrt_x_p(double x, uint n, uint p)
             {
                 if (x < 0.0) 
                 {
@@ -115,7 +115,7 @@ namespace Computationalmathematics
                 }
                 return res;
             }
-        }
+		}
 
 
         public static class Integral
@@ -374,6 +374,12 @@ namespace Computationalmathematics
         {
             public static double powerSeriesMaclorenaMethod(double x, uint n)
 			{
+                if (n > 7)
+                {
+					MessageBox.Show("Так это пробный вариант метода Макларена, то не реализована функция вычисления коэффициентов.\nВместо этого заранее записаны коэф. для конкртной функции: exp(x).\nВобщем, должно быть n <= 7.");
+					return 0.0;
+				}
+
 				double a0 = 0.9999998;
 				double a1 = 1.0000000;
 				double a2 = 0.5000063;
@@ -385,33 +391,60 @@ namespace Computationalmathematics
 
                 double[] a = {a0, a1, a2, a3, a4, a5, a6, a7 };
                 double res = 0;
-                for (int i = 0; i < 7; i++)
+                for (int k = 0; k <= n; k++)
                 {
-                    res += a[i] * Math.Pow(x, i);
+                    res += a[k] * Math.Pow(x, k);
                 }
 				return res;
 			}
-			public static double ChebushevMethod(double x, uint n)
-			{
+            public static double ChebushevMethod(double x, uint n, double a, double b)
+            {
+				if (x < a || x > b)
+                {
+                    MessageBox.Show(nameof(x), $"x must be in [{a}, {b}]");
+                    return 0.0;
+                }
+                if (a >= b)
+                { 
+                    MessageBox.Show("a must be less than b", nameof(a));
+                    return 0.0;
+                }
+                if (n > 5)
+                {
+                    MessageBox.Show("Так это пробный вариант метода Чебышёва, то не реализована функция вычисления коэффициентов.\nВместо этого заранее записаны коэф. для конкртной функции: sinx.\nВобщем, должно быть n<=5.");
+                    return 0.0;
+                }
+
+
+				// Преобразуем x ∈ [a, b] → t ∈ [-1, 1]
+				//double t = (2 * x - a - b) / (b - a);
+
+				//double T0 = 1.0; // Первый элемент многочлена Чебышева
+                //double T1 = t; // Второй элемент многочлена Чебышева
+
 				double a1 = 1.000000002;
+                double a2 = 0;
 				double a3 = -0.166666589;
+                double a4 = 0;
 				double a5 = 0.008333075;
+                double a6 = 0;
 				double a7 = -0.000198107;
+                double a8 = 0;
+                double a9 = 0.000002608;
 
-				double[] a = { a1, a3, a5, a7 };
-                double res = 0;
+				double[] ck = { a1, a2, a3, a4, a5, a6, a7, a8, a9 };
 
-				for (uint i = 0; i < 4; i++)
-                {
-                    res += a[i]*Math.Pow(x, i);
-                }
+                double res = 0.0;
+				for (uint k = 0; k < n*2-1; k+=2)
+				{
+                    res += ck[k] * Math.Pow(x, k);
+				}
 				return res;
-			}
+            }
 			public static double iterationMethod(double x, uint n)
 			{
-				return iteration_sqrt_x_p(x, n, 2);
+				return 0.0;
 			}
-
 		}
 
 
@@ -564,6 +597,8 @@ namespace Computationalmathematics
         {
             uint n = CheckOnUIntNumber(textBoxN.Text);
             double x = CheckOnNumber(textBoxX0.Text);
+            double a = CheckOnNumber(textBox_IntervalA.Text);
+            double b = CheckOnNumber(textBox_IntervalB.Text);
             
 
 			// Начинаем считать
@@ -573,8 +608,7 @@ namespace Computationalmathematics
 			}
 			else if (многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked)
 			{
-				answerLabel.Text =  ElementaryFun.ChebushevMethod(x, n).ToString();
-                
+				answerLabel.Text =  ElementaryFun.ChebushevMethod(x, n, a, b).ToString();
 			}
 			else if (итерацийToolStripMenuItem.Checked)
 			{
@@ -686,17 +720,20 @@ namespace Computationalmathematics
 			многочисленныхПриближенийЧебышеваToolStripMenuItem.Visible = true;
 			итерацийToolStripMenuItem.Visible = true;
 
-            разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Checked = true;
+            многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked = true;
 
             textBoxX0.Visible = true;
             labelX0.Visible = true;
             textBoxN.Visible = true;
             label1.Visible = true;
+            label_Interval.Visible = true;
+            textBox_IntervalA.Visible = true; 
+            textBox_IntervalB.Visible = true;
 
             
 
 
-			primerLabel.Text = "e^x = ";
+			primerLabel.Text = "sin(x) = ";
             answerLabel.Text = "";
         }
 
@@ -758,6 +795,20 @@ namespace Computationalmathematics
             {
                 currentItem.Checked = true;
             }
+            
+            // Специальная настройка Элементарных функций, для метода Чебышёва, где нужен интервал
+            if (многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked == true)
+            {
+                textBox_IntervalA.Visible = true;
+                textBox_IntervalB.Visible = true;
+                label_Interval.Visible = true;
+            }
+            else
+            {
+				textBox_IntervalA.Visible = false;
+				textBox_IntervalB.Visible = false;
+				label_Interval.Visible = false;
+			}
         }
 
         // Переключение Алгоритма
