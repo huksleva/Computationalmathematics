@@ -368,7 +368,97 @@ namespace Computationalmathematics
         }
         public static class NonLinearEqualation
         {
+            private static double f(double x)
+            {
+                // f(x) = e^x + x^3 - ln(x)
+                return Math.Exp(x) + Math.Pow(x, 3) - Math.Log(x);
+            }
+            private static double df(double x)
+            {
+                // f`(x) = e^x + 3x^2 - 1/x
+                return Math.Exp(x) + (3 * Math.Pow(x, 2)) - (1 / x);
+            }
+            private static double ddf(double x)
+            {
+                // f``(x) = e^x + 6x + 1/(x^2)
+                return Math.Exp(x) + (6 * x) - (1 / Math.Pow(x, 2));
+            }
+            
+            private static double FindInitialGuess(double a, double b, double accuracy, int steps = 100)
+            {
+                /// <summary>
+                /// Находит начальное приближение x0 для метода Ньютона на отрезке [a, b].
+                /// </summary>
+                /// <param name="f">Функция f(x)</param>
+                /// <param name="ddf">Вторая производная f''(x)</param>
+                /// <param name="d1">Первая производная f'(x)</param>
+                /// <param name="a">Левая граница отрезка</param>
+                /// <param name="b">Правая граница отрезка</param>
+                /// <param name="steps">Число точек для проверки (по умолчанию 100)</param>
+                /// <returns>Найденное x0, или NaN, если не найдено</returns>
+                
 
+                for (int i = 0; i <= steps; i++)
+                {
+                    double x = a + (b - a) * i / steps; // равномерная сетка
+                    double fx = f(x);
+                    double f2x = ddf(x);
+                    double f1x = df(x);
+
+                    // Проверяем: f'(x) не слишком мала и условие сходимости выполняется
+                    if (Math.Abs(f1x) > accuracy && fx * f2x > 0)
+                    {
+                        return x;
+                    }
+                }
+
+                // Если не нашли — пробуем центр отрезка как fallback (осторожно!)
+                double mid = (a + b) / 2;
+                if (Math.Abs(df(mid)) > accuracy)
+                {
+                    return mid;
+                }
+
+                // Если всё плохо — возвращаем NaN
+                return double.NaN;
+            }
+            
+            public static double NewtonMethod(double a, double b, double accuracy)
+            {
+                // Ищем начальное приближение (x0) при помощи левостороннего бинарного поиска
+                double x = FindInitialGuess(a, b, accuracy);
+                
+                while (x > accuracy)
+                {
+                    x -= f(x) / df(x);
+                }
+                
+                return x;
+            }
+            public static double dihotomiyaMethod(double a, double b, double accuracy)
+            {
+
+
+
+
+
+
+
+
+                return 0;
+            }
+            public static double chordMethod(double a, double b, double accuracy)
+            {
+
+
+
+
+
+
+
+
+                return 0;
+            }
         }
         public static class ElementaryFun
         {
@@ -592,7 +682,26 @@ namespace Computationalmathematics
         }
         private void calculateNonLinearEqualation()
         {
+            double accuracy = CheckOnNumber(textBox_accuracy.Text);
+            double a = CheckOnNumber(textBox_IntervalA.Text);
+            double b = CheckOnNumber(textBox_IntervalB.Text);
 
+            if (методНьютонакасательныхToolStripMenuItem.Checked)
+            {
+                answerLabel.Text = "x = " + NonLinearEqualation.NewtonMethod(a, b, accuracy).ToString();
+            }
+            else if (дихотомииToolStripMenuItem.Checked)
+            {
+                answerLabel.Text = "x = " + NonLinearEqualation.dihotomiyaMethod(a, b, accuracy).ToString();
+            }
+            else if (хордToolStripMenuItem.Checked)
+            {
+                answerLabel.Text = "x = " + NonLinearEqualation.chordMethod(a, b, accuracy).ToString();
+            }
+            else
+            {
+                MessageBox.Show("ERROR, нет такого метода для вычисления нелинейных функций.");
+            }
         }
         private void calculateElementaryFunctions()
         {
@@ -658,8 +767,8 @@ namespace Computationalmathematics
             allMetodsInvisible();
             allAlgoritmsInvisible();
 
-            SetupelementaryFunctionsMethod();
-            ToolStripMenuItem4.Checked = true;
+            SetupnotLinearEquationsMethods();
+            ToolStripMenuItem3.Checked = true;
         }
 
         
@@ -711,8 +820,24 @@ namespace Computationalmathematics
         }
         private void SetupnotLinearEquationsMethods()
         {
-            primerLabel.Text = "f(x) = e^x + x^3 - ln(x)";
-            answerLabel.Text = "";
+            // Численные методы
+            методНьютонакасательныхToolStripMenuItem.Visible = true;
+            дихотомииToolStripMenuItem.Visible = true;
+            хордToolStripMenuItem.Visible = true;
+
+            методНьютонакасательныхToolStripMenuItem.Checked = true;
+
+           
+            
+            label_Interval.Visible = true;
+            textBox_IntervalA.Visible = true;
+            textBox_IntervalB.Visible = true;
+            label_accuracy.Visible = true;
+            textBox_accuracy.Visible = true;
+
+
+            primerLabel.Text = "f(x) = e^x + x^3 - ln(x) = 0";
+            answerLabel.Text = "x = ";
         }
         private void SetupelementaryFunctionsMethod()
         {
@@ -925,6 +1050,11 @@ namespace Computationalmathematics
         }
 
         private void tableForDIFF_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void методНьютонакасательныхToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
