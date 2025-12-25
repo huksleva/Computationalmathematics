@@ -374,6 +374,7 @@ namespace Computationalmathematics
         {
             public static double powerSeriesMaclorenaMethod(double x, uint n)
 			{
+                // return powerSeriesMaclorena_exp(x, n);
                 if (n > 7)
                 {
 					MessageBox.Show("Так это пробный вариант метода Макларена, то не реализована функция вычисления коэффициентов.\nВместо этого заранее записаны коэф. для конкртной функции: exp(x).\nВобщем, должно быть n <= 7.");
@@ -443,7 +444,7 @@ namespace Computationalmathematics
             }
 			public static double iterationMethod(double x, uint n)
 			{
-				return 0.0;
+				return iterationNewton_sqrt_x_p(x, n, 2);
 			}
 		}
 
