@@ -45,6 +45,9 @@
             this.разложениеВСтепенныеРядыМаклоренаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.многочисленныхПриближенийЧебышеваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.итерацийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.методНьютонакасательныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.дихотомииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.хордToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.алгоритмToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.алгоритмСПостояннымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сПеременнымШагомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,9 +69,6 @@
             this.textBox_IntervalB = new System.Windows.Forms.TextBox();
             this.label_accuracy = new System.Windows.Forms.Label();
             this.textBox_accuracy = new System.Windows.Forms.TextBox();
-            this.методНьютонакасательныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.дихотомииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.хордToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -201,6 +201,25 @@
             this.итерацийToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
             this.итерацийToolStripMenuItem.Text = "Итераций";
             // 
+            // методНьютонакасательныхToolStripMenuItem
+            // 
+            this.методНьютонакасательныхToolStripMenuItem.Name = "методНьютонакасательныхToolStripMenuItem";
+            this.методНьютонакасательныхToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
+            this.методНьютонакасательныхToolStripMenuItem.Text = "Ньютона (касательных)";
+            this.методНьютонакасательныхToolStripMenuItem.Click += new System.EventHandler(this.методНьютонакасательныхToolStripMenuItem_Click);
+            // 
+            // дихотомииToolStripMenuItem
+            // 
+            this.дихотомииToolStripMenuItem.Name = "дихотомииToolStripMenuItem";
+            this.дихотомииToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
+            this.дихотомииToolStripMenuItem.Text = "Дихотомии (деления пополам)";
+            // 
+            // хордToolStripMenuItem
+            // 
+            this.хордToolStripMenuItem.Name = "хордToolStripMenuItem";
+            this.хордToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
+            this.хордToolStripMenuItem.Text = "Хорд";
+            // 
             // алгоритмToolStripMenuItem
             // 
             this.алгоритмToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -307,7 +326,7 @@
             // 
             this.answerLabel.AutoSize = true;
             this.answerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.answerLabel.Location = new System.Drawing.Point(722, 111);
+            this.answerLabel.Location = new System.Drawing.Point(616, 111);
             this.answerLabel.Name = "answerLabel";
             this.answerLabel.Size = new System.Drawing.Size(0, 63);
             this.answerLabel.TabIndex = 11;
@@ -390,25 +409,6 @@
             this.textBox_accuracy.TabIndex = 20;
             this.textBox_accuracy.Text = "0,0000001";
             // 
-            // методНьютонакасательныхToolStripMenuItem
-            // 
-            this.методНьютонакасательныхToolStripMenuItem.Name = "методНьютонакасательныхToolStripMenuItem";
-            this.методНьютонакасательныхToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
-            this.методНьютонакасательныхToolStripMenuItem.Text = "Ньютона (касательных)";
-            this.методНьютонакасательныхToolStripMenuItem.Click += new System.EventHandler(this.методНьютонакасательныхToolStripMenuItem_Click);
-            // 
-            // дихотомииToolStripMenuItem
-            // 
-            this.дихотомииToolStripMenuItem.Name = "дихотомииToolStripMenuItem";
-            this.дихотомииToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
-            this.дихотомииToolStripMenuItem.Text = "Дихотомии (деления пополам)";
-            // 
-            // хордToolStripMenuItem
-            // 
-            this.хордToolStripMenuItem.Name = "хордToolStripMenuItem";
-            this.хордToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
-            this.хордToolStripMenuItem.Text = "Хорд";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,7 +435,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Тоц Л. А. ИВТ-2";
             this.Load += new System.EventHandler(this.Form1_Load);

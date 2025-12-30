@@ -964,18 +964,21 @@ namespace Computationalmathematics
             }
             
             // Специальная настройка Элементарных функций, для метода Чебышёва, где нужен интервал
-            if (многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked == true)
+            if (многочисленныхПриближенийЧебышеваToolStripMenuItem.Checked)
             {
                 textBox_IntervalA.Visible = true;
                 textBox_IntervalB.Visible = true;
                 label_Interval.Visible = true;
             }
-            else
+            else if (разложениеВСтепенныеРядыМаклоренаToolStripMenuItem.Checked || итерацийToolStripMenuItem.Checked)
             {
 				textBox_IntervalA.Visible = false;
 				textBox_IntervalB.Visible = false;
 				label_Interval.Visible = false;
 			}
+
+            // Специальная настройка для Нелинейных функций
+
         }
 
         // Переключение Алгоритма
