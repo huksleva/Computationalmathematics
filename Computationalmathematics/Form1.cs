@@ -370,18 +370,18 @@ namespace Computationalmathematics
         {
             private static double f(double x)
             {
-                // f(x) = e^x + x^3 - ln(x)
-                return Math.Exp(x) + Math.Pow(x, 3) - Math.Log(x);
+                // f(x) = x^3 - 12x - 8
+                return Math.Pow(x, 3) - 12 * x - 8;
             }
             private static double df(double x)
             {
-                // f`(x) = e^x + 3x^2 - 1/x
-                return Math.Exp(x) + (3 * Math.Pow(x, 2)) - (1 / x);
+                // f`(x) = 3x^2 - 12
+                return 3 * Math.Pow(x, 2) - 12;
             }
             private static double ddf(double x)
             {
-                // f``(x) = e^x + 6x + 1/(x^2)
-                return Math.Exp(x) + (6 * x) - (1 / Math.Pow(x, 2));
+                // f``(x) = 6x
+                return 6 * x;
             }
             
             private static double FindInitialGuess(double a, double b, double accuracy, int steps = 100)
@@ -427,37 +427,78 @@ namespace Computationalmathematics
             {
                 // Ищем начальное приближение (x0) при помощи левостороннего бинарного поиска
                 double x = FindInitialGuess(a, b, accuracy);
-                
-                while (x > accuracy)
+
+                if (double.IsNaN(x))
+                    throw new InvalidOperationException("Не удалось найти начальное приближение.");
+
+
+                double prevX;
+                do
                 {
-                    x -= f(x) / df(x);
-                }
-                
+                    prevX = x;
+                    x = x - f(x) / df(x); // формула Ньютона
+                } while (Math.Abs(x - prevX) > accuracy);
+
                 return x;
             }
             public static double dihotomiyaMethod(double a, double b, double accuracy)
             {
+                if (f(a) * f(b) >= 0)
+                    throw new ArgumentException("На концах отрезка функция должна иметь разные знаки.");
 
+                while (Math.Abs(b - a) > accuracy)
+                {
+                    double mid = (a + b) / 2.0;
+                    double fMid = f(mid);
 
+                    if (Math.Abs(fMid) < accuracy)
+                        return mid; // почти ноль — нашли корень
 
+                    // Выбираем половину отрезка с разными знаками
+                    if (f(a) * fMid < 0)
+                        b = mid;
+                    else
+                        a = mid;
+                }
 
-
-
-
-
-                return 0;
+                return (a + b) / 2.0; // возвращаем середину последнего отрезка
             }
             public static double chordMethod(double a, double b, double accuracy)
             {
+                if (f(a) * f(b) >= 0)
+                    throw new ArgumentException("На концах отрезка функция должна иметь разные знаки.");
 
+                // Выбираем неподвижный конец C
+                double C;
+                if (f(a) * df(a) > 0)
+                    C = a;
+                else if (f(b) * df(b) > 0)
+                    C = b;
+                else
+                {
+                    // Если ни один не подходит — выбираем по модулю f(x)
+                    // (меньше риск деления на ноль)
+                    C = Math.Abs(f(a)) > Math.Abs(f(b)) ? a : b;
+                }
 
+                double x = (C == a) ? b : a; // стартуем с подвижного конца
 
+                double prevX;
+                do
+                {
+                    prevX = x;
+                    // Формула хорд: x_{n+1} = x_n - f(x_n) * (C - x_n) / (f(C) - f(x_n))
+                    double numerator = f(x) * (C - x);
+                    double denominator = f(C) - f(x);
 
+                    if (Math.Abs(denominator) < 1e-12)
+                        throw new InvalidOperationException("Деление на ноль в методе хорд.");
 
+                    x = x - numerator / denominator;
+                }
+                while (Math.Abs(x - prevX) > accuracy);
 
-
-
-                return 0;
+                return x;
             }
         }
         public static class ElementaryFun
@@ -836,7 +877,7 @@ namespace Computationalmathematics
             textBox_accuracy.Visible = true;
 
 
-            primerLabel.Text = "f(x) = e^x + x^3 - ln(x) = 0";
+            primerLabel.Text = "f(x) = x^3 - 12x - 8 = 0";
             answerLabel.Text = "x = ";
         }
         private void SetupelementaryFunctionsMethod()
